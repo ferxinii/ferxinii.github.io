@@ -1,0 +1,14 @@
+- name: Linux / Unix CLI & bash
+  level: 5
+  color: success
+  comment-right: Experienced.
+
+- name: LaTeX
+  level: 5
+  color: info
+  comment-bottom: Extensive use for academic projects.
+
+- name: gnuplot
+  level: 4
+  comment-bottom: Experience piping from C and making videos.
+

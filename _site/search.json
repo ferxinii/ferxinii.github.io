@@ -1,0 +1,27 @@
+[
+  
+    {
+      "title"    : "Voronoi and Delaunay cells",
+      "category" : "",
+      "tags"     : "geometry",
+      "url"      : "/blog/voronoi",
+      "date"     : "2025-08-20 00:00:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Convex geometry",
+      "category" : "",
+      "tags"     : "geometry",
+      "url"      : "/blog/convex_geometry",
+      "date"     : "2025-08-18 00:00:00 +0200"
+    } ,
+  
+    {
+      "title"    : "About this website",
+      "category" : "",
+      "tags"     : "web",
+      "url"      : "/blog/about",
+      "date"     : "2025-08-08 00:00:00 +0200"
+    } 
+  
+]

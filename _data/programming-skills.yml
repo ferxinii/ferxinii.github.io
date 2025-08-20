@@ -1,0 +1,24 @@
+- name: C
+  level: 6
+  color: danger
+  # comment-right: Advanced.
+  comment-bottom: Experience writing complex projects.
+
+- name: Python
+  level: 4
+  color: warning
+  comment-right: Experienced.
+
+- name: Matlab
+  level: 6
+  color: info
+
+- name: Fortran 
+  level: 2
+  color: primary
+  comment-right: Basic
+
+- name: R
+  level: 2
+  color: secondary
+  comment-right: Basic

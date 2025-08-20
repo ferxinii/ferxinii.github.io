@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Convex geometry">
+  <meta property="og:description" content="Definitions and theorems in convex geometry.">
+  <meta property="og:image" content="/assets/face.png">
+
+  <title>Convex geometry</title>
+  <meta name="description" content="Definitions and theorems in convex geometry.">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- KaTeX  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+              // ...options...
+          });
+      });
+  </script>
+
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"> -->
+  <!-- <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script> -->
+  <!-- <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" -->
+  <!-- onload="renderMathInElement(document.body);"></script> -->
+
+</head>
+
+
+<body class="h-100 d-flex flex-column">
+<!-- <body class="page.layout"> -->
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/"><h5><b>ferxinii</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link " href="/projects/">Projects</a>
+
+      <a class="nav-item nav-link active" href="/blog/">Blog</a>
+
+      <a class="nav-item nav-link " href="/about/">About</a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <h1><b>Convex geometry</b></h1>
+
+<p class="post-metadata text-muted">
+  18 August 2025 -  
+  <b>32 mins read time</b>
+
+  <br>Tags: 
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#geometry">
+      <span class="tag badge badge-pill text-primary border border-primary">geometry</span>
+    </a>
+    </p>
+
+
+<div class="list-group my-3"><a class="list-group-item active disabled text-white">Table of Contents</a>
+        <a class="list-group-item list-group-item-action toc-sub" href="#affine-sets">
+          Affine sets
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#convex-sets">
+          Convex sets
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#convex-cones">
+          Convex cones
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#topological-notions">
+          Topological notions
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#projections-and-separating-hyperplanes">
+          Projections and separating hyperplanes
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#faces-of-convex-sets">
+          Faces of convex sets
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#polyhedra-and-polytopes">
+          Polyhedra and polytopes
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#cells-and-triangulations">
+          Cells and triangulations
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#references">
+          References
+        </a>
+      
+
+</div>
+
+<!---->
+<!---->
+<!-- <div class="list-group my-3"> -->
+<!---->
+<!---->
+<!--     <a class="list-group-item active disabled text-white">Table of Contents</a> -->
+<!---->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#affine-sets">Affine sets</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#convex-sets">
+Convex sets</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#convex-cones">
+Convex cones</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#topological-notions">
+Topological notions</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#projections-and-separating-hyperplanes">
+Projections and separating hyperplanes</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#faces-of-convex-sets">
+Faces of convex sets</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#polyhedra-and-polytopes">
+Polyhedra and polytopes</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#cells-and-triangulations">
+Cells and triangulations</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#references">
+References</a> -->
+<!---->
+<!--    -->
+<!---->
+<!-- </div> -->
+<!---->
+
+<h2 id="sec:affine">Affine sets</h2>
+
+<div class="definition">
+  <p>A set \(M \subset \mathbb{R}^n\) is an <em>affine set</em> if
+\(\forall x, y \in M, \ \forall \lambda \in \mathbb{R}\), then
+\((1-\lambda) x + \lambda y \in M\). That is, if the (infinite) line
+that passes through any two points of the set is contained in the set
+itself.</p>
+
+</div>
+
+<p>Affine sets are closely related to vectorial subspaces of
+\(\mathbb{R}^n\), as the following theorem establishes. To see this, we
+first define the <em>translation</em> of a subset \(S \subset \mathbb{R}^n\) by
+\(a \in \mathbb{R}^n\) as \(M + a = \{ x + a \mid x \in M \}\).
+Furthermore, we say that an affine set \(M\) is <em>parallel</em> to another
+affine set \(L\) if \(\exists a \in \mathbb{R}^n\) such that
+\(M = L + a\). It is easy to show that the translate of an affine set
+results in another affine set.</p>
+
+<div class="theorem">
+  <p>Each non-empty affine set \(M \subset \mathbb{R}^n\) is parallel to a
+unique vectorial subspace \(L\), given by
+\(L = M - M = \{ x - y \mid x, y \in M \}\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Suppose \(M\) has two parallel subspaces \(L_1, L_2\). They must also be
+parallel, so \(\exists b\) s.t. \(L_2 = L_1 + b\). Since 0
+\(\in L_2 \Rightarrow -b \in L_1 \Rightarrow b \in L_1\). Therefore,
+\(L_1 + b = L_2 \subset L_1\). Similarly, we can see that
+\(L_1 \subset L_2\), so \(L_1 = L_2\). Regarding the existance, for any
+\(x \in M\), define \(T = M - x\) which is a translation of \(M\)
+containing 0. Since \(T\) is affine,
+\(\forall y \in T, \lambda \in \mathbb{R} \Rightarrow \lambda y + (1-\lambda)0 = \lambda y \in T\),
+so \(T\) is closed under scalar multiplication. Furthermore,
+\(\forall y_1, y_2 \in T\),
+\(\frac{1}{2}(y_1 + y_2) = \frac{1}{2}y_1 + (1-\frac{1}{2}) y_2 \in T\),
+so \(y_1 + y_2 = 2(\frac{1}{2}(y_1+y_2)) \in T\) and \(T\) is closed
+under addition. Therefore, \(L = M-M\) is a unique vectorial subspace
+parallel to \(M\). ◻</p>
+  </div>
+</details>
+
+<p>Geometrically, an affine set can be seen as a translation of a vectorial
+subset, and therefore does not need to contain the origin. We write this
+as \(M = L + a\) for some \(a\in \mathbb{R}^n\).</p>
+
+<div class="definition">
+  <p>The dimension of a non-empty affine set is the dimension of the
+vectorial subpsace parallel to it.</p>
+
+</div>
+
+<p>The next theorem establishes that every affine set can be represented as
+the solution set of a system of nonhomogeneous linear equations.</p>
+
+<div class="theorem">
+  <p><span id="thm:aff_representation" label="thm:aff_representation"></span>
+Let
+\(b \in \mathbb{R}^m, \mathbf{B} \in \mathcal{M}_{m \times n} (\mathbb{R})\).
+Then, \(M = \{ x \in \mathbb{R}^n \mid \mathbf{B} x = b \}\) is an
+affine set in \(\mathbb{R}^n\). Moreover, every affine set may be
+represented in this way.</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Let
+\(x_1, x_2 \in M \Rightarrow \mathbf{B}x_1 = b, \mathbf{B} x_2 = b \Rightarrow \mathbf{B}(\lambda x_1 + (1- \lambda) x_2) = \lambda b + (1-\lambda)b = b \Rightarrow \lambda x_1 + (1-\lambda) x_2 \in M \ \forall \lambda \in \mathbb{R}\),
+so \(M\) is affine. In the converse direction, suppose \(M\) affine. Let
+\(L\) be its parallel subspace, and \(\{b_1, \ldots, b_m\}\) a basis of
+\(L^\top\). Then,
+\(L = (L^\top)^\top = \{ x \mid  \langle s, b_i \rangle = 0\} = \{ x \mid \mathbf{B} x = 0\}\),
+where \(\mathbf{B}\) is the matrix having \(b_i\) as rows. Then,
+\(M = L + a = \{ x \mid \mathbf{B} x = \mathbf{B} a = b\}\). ◻</p>
+  </div>
+</details>
+
+<p>It is important to notice that the intersection of an arbitrary
+collection of affine sets is affine. This allows the definition of the
+<em>affine hull</em> of a set using an external representation.</p>
+
+<div class="definition">
+  <p>Given \(S \subset \mathbb{R}^n\), the <em>affine hull</em> of \(S\),
+\(\mathrm{aff}(S)\), is the smallest affine set containing \(S\). In
+other words, the intersection of the collection of affine sets \(M\)
+such that \(S \subset M\).</p>
+
+</div>
+
+<p>By defining an <em>affine combination of points</em>, we can characterize the
+affine hull of a set using an internal representation.</p>
+
+<div class="definition">
+  <p>An <em>affine combination of points</em>
+\(x_1, x_2, \ldots, x_m \in \mathbb{R}^n\) is any point of the form
+\(\lambda_1 x_1 + \lambda_2 x_2 + \cdots + \lambda_m x_m\) with
+\(\lambda_i \in \mathbb{R}, \ \sum_{i=0}^m \lambda_i = 1\).</p>
+
+</div>
+<div class="theorem">
+  <p><span id="thm:aff_closed" label="thm:aff_closed"></span>
+\(M \subset \mathbb{R}^n\) is affine \(\iff\) \(M\) is closed under
+affine combinations.</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>(\(\Rightarrow\)) Assume \(M\) affine, we will use induction. The base
+case is true by definition:
+\(x_1, x_2 \in M, \ \lambda_1 + \lambda_2 = 1 \Rightarrow \lambda_1 x_1 + \lambda_2 x_2 \in M\).
+Assume \(x_i \in M, \lambda_i \in \mathbb{R}, \ i = 1, \cdots, k\) s.t.
+\(\sum_i^k \lambda_i = 1\) implies that
+\(\sum_i^k \lambda_i x_i \in M\). Now, we consider
+\(x_i \in M, \lambda_i \in \mathbb{R}, \ i = 1, \cdots, k+1\) s.t.
+\(\sum_1^{k+1} \lambda_i = 1\). Then,
+\(\sum_i^{k+1} \lambda_i x_i = \sum_i^k \lambda_i x_i + \lambda_{k+1} x_{k+1} = (1-\lambda_{k+1})\sum_i^k \frac{\lambda_i}{1-\lambda_{k+1}}x_i + \lambda_{k+1} x_{k+1} = (1-\lambda_{k+1})z + \lambda_{k+1} x_{k+1}\).
+Note that \(z\) satisfies the induction hypothesis, so \(z \in M\) and
+therefore by definition \(\sum_i^{k+1} \lambda_i x_i \in M\).
+(\(\Leftarrow\)) Assume \(M\) is closed under affine sums. Then, the
+affine combination of any two elements of \(M\) must be in \(M\), which
+is precisely the definition of affine set. ◻</p>
+  </div>
+</details>
+
+<div class="corollary">
+  <p>Given \(S \subset \mathbb{R}^n\), \(\mathrm{aff}(S)\) consists of all
+the affine combinations of points in \(S\), i.e.,
+\(\mathrm{aff}(S) = \left\{ x \ \middle| \ x = \sum_{i=0}^m \lambda_i x_i,\ \sum_{i=0}^m \lambda_i = 1, \ \lambda_i \in \mathbb{R}, \ x_i \in S,\ m \in \mathbb{N} \right\}\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p><span id="cor:aff_hull_comb" label="cor:aff_hull_comb"></span> The set
+of all affine combinations of points in \(S\), call it \(X\), must be
+affine by <a href="#thm:aff_closed">[thm:aff_closed]</a> and contains \(S\).
+Since \(\mathrm{aff}(S)\) is the smallest such set containing \(S\),
+\(\mathrm{aff}(S) \subset X\). On the other hand, all elements of \(S\)
+belong to \(\mathrm{aff}(S)\), so all their affine combinations must lie
+in \(\mathrm{aff}(S)\) by <a href="#thm:aff_closed">[thm:aff_closed]</a> and
+\(X \subset \mathrm{aff}(S)\). ◻</p>
+  </div>
+</details>
+
+<p>We can now relate affine combinations of a finite set of points to
+linear combinations of the corresponding vectors of the parallel
+subspace.</p>
+
+<div class="definition">
+  <p>A set of \(m+1\) points \(\{ b_0, \ldots, b_m\} \subset \mathbb{R}^n\)
+is said to be <em>affinely independent</em> if \(\mathrm{aff}(S)\) is
+m-dimensional.</p>
+
+</div>
+
+<p>Note that letting
+\(L = \mathrm{aff}(\{0, b_1 - b_0, \ldots, b_m - b_0\})\), we have
+\(M = \mathrm{aff}(\{ b_0, b_1, \ldots, b_m\}) = L + b_0\). The points
+in \(M\) are those expressible in the form
+\(x = b_0 + \lambda_1 (b_1 - b_0) + \cdots + \lambda_m (b_m - b_0)\), or
+in other words,
+\(x = \lambda_0 b_0 + \lambda_1 b_1 + \cdots + \lambda_m x_m, \ \sum_{i=0}^m \lambda_i = 1\).</p>
+
+<p>Therefore, \(\{ b_0, b_1, \ldots, b_m\} \subset \mathbb{R}^n\) are
+affinely independent
+\(\iff \{ b_1 - b_0, \ldots, b_m - b_0\} \subset \mathbb{R}^n\) are
+linearly independent. Furthermore, every element
+\(x \in \mathrm{aff}(\{ b_0, b_1, \ldots, b_m\})\) can be uniquely
+expressed as an affine combination of \(b_i\).</p>
+
+<p>Finally, we will formally define a very important affine set: the
+<em>hyperplane</em>, and give a useful way to represent it.</p>
+
+<div class="definition">
+  <p>An (n-1)-dimensional affine set in \(\mathbb{R}^n\) is called a
+<em>hyperplane</em>.</p>
+
+</div>
+<div class="proposition">
+  <p>A hyperplane can be represented as
+\(H = \{x \mid \langle x, b \rangle = \beta \}\), with
+\(b \in \mathbb{R}^n, \ \beta \in \mathbb{R}\) unique up to a common
+non-zero multiple.</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Analogous to <a href="#thm:aff_representation">[thm:aff_representation]</a>. ◻</p>
+  </div>
+</details>
+
+<h2 id="convex-sets">Convex sets</h2>
+
+<div class="definition">
+  <p>A set \(C \subset \mathbb{R}^n\) is a <em>convex set</em> if
+\(\forall x, y \in C, \ \forall \lambda \in (0,1)\) then
+\((1-\lambda) x + \lambda y \in C\). That is, if the line segment
+between any two points of the set is contained in the set itself.</p>
+
+</div>
+
+<p>It follows that all affine sets are convex. Furthermore, it is easy to
+see that the intersection of an arbitrary collection of convex sets is
+convex. A very important example of a convex set is the <em>half-space</em>,
+which is related to affine hyperplanes.</p>
+
+<div class="definition">
+  <p>For any non-zero \(b \in \mathbb{R}^n, \beta \in \mathbb{R}\), the sets
+\(\{ x \mid \langle x, b \rangle \leq \beta \}, \ \{ x \mid \langle x, b \rangle \geq \beta \}\)
+are called <em>closed half-spaces</em>. The sets
+\(\{ x \mid \langle x, b \rangle &lt; \beta \}, \ \{ x \mid \langle x, b \rangle &gt; \beta \}\)
+are called <em>open half-spaces</em>.</p>
+
+</div>
+
+<p>Note that they are unique up to a common non-zero multiple of \(b\) and
+\(\beta\). Thus, the half-spaces depend only on the hyperplane
+\(H = \{ x \mid \langle x, b \rangle = \beta \}\). We may use the
+notation \(h_H^{+}, h_H^{-}\) to refer to the upper and lower closed
+half-spaces of \(H\) and \(\mathring{h}_H^+, \mathring{h}_H^-\) to the
+open half-spaces.</p>
+
+<p>The next result establishes that the solution set of a nonhomogeneous
+system of arbitrarily many linear inequalities is a convex set.</p>
+
+<div class="theorem">
+  <p><span id="thm:inequalities-convex" label="thm:inequalities-convex"></span> Let
+\(b_i \in \mathbb{R}^n, \ \beta_i \in \mathbb{R}\) for \(i \in I\) an
+arbitrary index set. Then,
+\(C = \{ x \mid \langle x, b_i\rangle \leq \beta_i, \ i \in I\}\) is a
+convex set.</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Let \(C_i = \{ x \mid \langle x, b_i \rangle \leq \beta_i \}\). Then,
+\(C_i\) is a closed half-space (or \(\mathbb{R}^n\) or \(\emptyset\)),
+and thus convex. Then, \(C = \bigcap_{i \in I} C_i\) is also convex. ◻</p>
+  </div>
+</details>
+
+<p>Also, note that the result still holds if we consider strict
+inequalities or equalities, even simultaneously. Regarding the converse,
+a similar result claims that all convex sets can be represented as the
+intersection of all those closed half-spaces which contain it. The proof
+requires the use of the <em>supporting hyperplane theorem</em>, which is
+explained later.</p>
+
+<p>Next, proceeding in a similar manner as before, we may define the
+<em>convex hull</em> of a set using an external representation.</p>
+
+<div class="definition">
+  <p>Given \(S\subset \mathbb{R}^n\), the <em>convex hull</em> of \(S\),
+\(\mathrm{conv}(S)\), is the unique smallest convex set containing
+\(S\). In other words, the intersection of the collection of convex sets
+\(C\) such that \(S \subset C\).</p>
+
+</div>
+
+<p>By defining a <em>convex combination of points</em>, we can give an alternative
+definition of the convex hull using an internal representation.</p>
+
+<div class="definition">
+  <p>A <em>convex combination of points</em>
+\(x_1, x_2, \ldots, x_m \in \mathbb{R}^n\) is any point of the form
+\(\theta_1 x_1 + \cdots + \theta_m x_m\) with
+\(\theta_i \geq 0, \ \sum_{i=0}^m \theta_1 = 1\).</p>
+
+</div>
+<div class="theorem">
+  <p><span id="thm:convex_closed" label="thm:convex_closed"></span>
+\(C \subset \mathbb{R}^n\) is convex \(\iff\) it is closed under convex
+combinations.</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Analogous to <a href="#thm:aff_closed">[thm:aff_closed]</a>. ◻</p>
+  </div>
+</details>
+
+<div class="theorem">
+  <p>Given \(S \subset \mathbb{R}^n, \ \mathrm{conv}(S)\) consists of all the
+convex combinations of the elements of S.</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Analogous to <a href="#cor:aff_hull_comb">[cor:aff_hull_comb]</a>. ◻</p>
+  </div>
+</details>
+
+<p>We can also have a notion of dimensionality of a convex set in terms of
+its affine hull.</p>
+
+<div class="definition">
+  <p><span id="def:conv_dim" label="def:conv_dim"></span> The dimension of a
+convex set \(C\) is the dimension of \(\mathrm{aff}(C)\).</p>
+
+</div>
+
+<h2 id="convex-cones">Convex cones</h2>
+
+<div class="definition">
+  <p>A set \(K \subset \mathbb{R}^n\) is a <em>cone</em> if it is closed under
+positive scalar multiplication, i.e.,
+\(x \in K, \ \lambda &gt; 0 \implies \lambda x \in K\). If it is also a
+convex set, then \(K\) is a <em>convex cone</em>.</p>
+
+</div>
+
+<p>Note that such a set is the union of half-lines emanating from the
+origing, which itself need not be included.</p>
+
+<p>It is easy to see that the intersection of an arbitrary collection of
+convex cones is a convex cone. Similarly to before, the next result
+establishes that the solution to a set of homogeneous linear
+inequalities is a convex cone (not just a convex set as would be the
+case if the inequalities were nonhomogeneous).</p>
+
+<div class="corollary">
+  <p>Let \(b_i \in \mathbb{R}^n\) for \(i \in I\) an arbitrary index set.
+Then,
+\(K = \{ x \in \mathbb{R}^n \mid \langle x, b_i \rangle \leq 0, \ i \in I\}\)
+is a convex cone.</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Analogous to <a href="#thm:inequalities-convex">[thm:inequalities-convex]</a>. ◻</p>
+  </div>
+</details>
+
+<p>The following results allow for an alternative represantation of convex
+cones.</p>
+
+<div class="theorem">
+  <p><span id="thm:cone_closed" label="thm:cone_closed"></span>
+\(K \subset \mathbb{R}^n\) is a convex cone \(\iff\) it is closed under
+addition and positive scalar multiplication (\(\iff\) it contains all
+the <em>positive</em> linear combinations of its elements).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Assume \(K\) is a convex cone, and take \(x, y \in K\). By definition of
+cone, \(\frac{1}{2}x, \frac{1}{2}y \in K\), and by convexity
+\(\frac{1}{2}(x+y) = \frac{1}{2}x + (1-\frac{1}{2})y \in K\). Therefore,
+\(x+y = 2 \frac{1}{2}(x+1) \in K\), so it is closed under addition. On
+the other hand, assume \(K\) is closed under addition and positive
+scalar multiplication. Let \(x, y \in K, \ \lambda \in (0, 1)\), so
+\(\lambda x, (1-\lambda)y \in K\) and also
+\(\lambda x + (1-\lambda)y \in K\), thus \(K\) is a convex cone. ◻</p>
+  </div>
+</details>
+
+<div class="corollary">
+  <p>Let \(S \subset \mathbb{R}^n\), and \(K\) the set of all positive linear
+combinations of \(S\). Then, \(K\) is the smallest convex cone which
+contains \(S\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>\(K\) is a convex cone by <a href="#thm:cone_closed">[thm:cone_closed]</a>, and
+\(S \subset K\), so \(K\) is a convex cone containing \(S\). On the
+other hand, every convex cone containing \(S\) must also contain \(U\),
+so \(K\) is minimal. ◻</p>
+  </div>
+</details>
+
+<div class="corollary">
+  <p>Let \(C \subset \mathbb{R}^n\) be a convex set. Then,
+\(K = \{ \lambda x \mid \lambda &gt; 0, \ x \in C\}\) is the smallest
+convex cone which includes \(C\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Consequence of the previous corollary. ◻</p>
+  </div>
+</details>
+
+<p>Now, we can define the notion of the cone generate by an arbitrary
+subset, and relate it with an internal representation using the previous
+results.</p>
+
+<div class="definition">
+  <p>Given \(S \subset \mathbb{R}^n\), \(\mathrm{cone}(S)\) is the union of
+the smallest convex cones containing \(S\) and the origin:
+\(\mathrm{cone}(S) = \{ 0 \} \cup \{ \lambda x \mid \lambda &gt; 0, \ x \in S\}\)
+= \(\{ \lambda x \mid \lambda \geq 0, \ x \in S\}\).</p>
+
+</div>
+
+<p>It is then clear that \(\mathrm{cone}(S)\) is the union of all the
+positive linear combinations of elements of \(S\) and the origin.</p>
+
+<p>Finally, it is useful to note that every convex set
+\(C \subset \mathbb{R}^n\) can be regarded as a cross-section of some
+convex cone \(K \subset \mathbb{R}^{n+1}\). The construction involves
+<em>lifting</em> \(C\) to a higher dimension and generating its cone, as
+follows: \(\begin{aligned}
+    K &amp;= \mathrm{cone}(\{ (1,x) \in \mathbb{R}^{n+1} \mid x \in C \})
+      = \{(\lambda, \lambda x) \mid \lambda \geq 0, \ x \in C \}
+\end{aligned}\) Then, \(C = K \cap H_1\), with the hyperplane
+\(H_1 = \{ (1, y) \mid y \in \mathbb{R}^{n} \}\).</p>
+
+<h2 id="topological-notions">Topological notions</h2>
+
+<p>We consider the closed unit ball defined as
+\(B = \{ x \in \mathbb{R}^n \mid |x| \leq 1\}\).</p>
+
+<p>For general subsets of \(\mathbb{R}^n\), we define its closure and
+interior as follows.</p>
+
+<div class="definition">
+  <p>The <em>closure</em> of a subset \(S \subset \mathbb{R}^n\) is
+\(\mathrm{cl}(S) = \bigcap \{ S + \varepsilon B \mid \varepsilon &gt; 0\}\).</p>
+
+</div>
+<div class="definition">
+  <p>The <em>interior</em> of a subset \(S \subset \mathbb{R}^n\) is
+\(\mathrm{int}(S) = \{ x \mid \exists \varepsilon &gt; 0, \ x + \varepsilon B \subset S \}\).</p>
+
+</div>
+
+<p>However, for convex sets we can define a more convenient notion of
+interior, that need not be of dimension \(n\) and can instead have the
+same dimension as the convex set itself.</p>
+
+<div class="definition">
+  <p>The <em>relative interior</em> of a convex subset \(C \subset \mathbb{R}^n\) is</p>
+
+  <p>\(\mathrm{ri}(C) = \{ x \in \mathrm{aff}(C) \mid \exists \varepsilon &gt; 0, \ (x + \varepsilon B) \cap \mathrm{aff}(C) \subset C\}\).</p>
+
+</div>
+<div class="definition">
+  <p>The <em>relative boundary</em> is
+\(\mathrm{rb}(S) = \mathrm{cl}(S) \setminus \mathrm{ri}(S)\).</p>
+
+</div>
+
+<p>Note that
+\(\mathrm{ri}(S) \subset S \subset \mathrm{cl}(S) \subset \mathrm{aff}(S)\).</p>
+
+<p>Although the next theorem is not topological in nature (rather about the
+internal representation of convex sets), it will be used to prove a
+claim about compactness of convex hulls.</p>
+
+<div class="theorem">
+  <p><span id="thm:caratheodory" label="thm:caratheodory"></span><strong>(Carathéodory)</strong> Let
+\(S \subset \mathbb{R}^n\) be a non-empty subset. Then,</p>
+
+  <ol>
+    <li>
+      <p>Every \(x \in \mathrm{cone}(S)\) can be represented as a positive
+linear combination of no more than \(n\) points of \(S\) which are
+linearly independent.</p>
+    </li>
+    <li>
+      <p>Every \(x \in \mathrm{conv}(S)\) can be represented as a convex
+combination of no more than \(n+1\) elements of \(S\).</p>
+    </li>
+  </ol>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p> </p>
+
+    <ol>
+      <li>
+        <p>Let \(x \in \mathrm{cone}(S)\). Let \(m \in \mathbb{N}\) be the
+smallest such that
+\(x = \sum_{i=1}^{m} \alpha_i x_i, \ \alpha_i &gt; 0, \ x_i \in S\).</p>
+
+        <p>Suppose that \(x_i\) are linearly dependent, so
+\(\exists \lambda_1,\ldots,\lambda_m \in \mathbb{R}\) such that
+\(\sum_{i=1}^m \lambda_i x_i = 0\) and at least one
+\(\lambda_i &gt; 0\) (we may always choose the coefficients such that
+at least one is positive). Consider
+\(\sum_{i=1}^m(\alpha_i - \bar \gamma \lambda_i) x_i\), with
+\(\bar \gamma\) the largest \(\gamma\) such that
+\(\alpha_i - \gamma \lambda_i \geq 0 \ \forall i\). In fact,
+\(\sum_{i=1}^m(\alpha_i - \bar \gamma \lambda_i) x_i = \sum_{i=1}^m \alpha_i x_i - \bar \gamma \sum_{i=1}^m \lambda_i x_i = \sum_{i=1}^m \alpha_i x_i + 0 = x\).
+Note that at least one of the coefficients is \(0\), so this
+provides a representation of \(x\) with fewer than \(m\) elements,
+which is a contradiction.</p>
+
+        <p>Therefore, \(x_i\) must be linearly independent when \(m\) is
+minimal, and this implies \(m \leq n\).</p>
+      </li>
+      <li>
+        <p>We apply the previous result to the cone generated by <em>lifting</em> the
+convex set to a higher dimension. Let
+\(K = \mathrm{cone}(\{ (1,x) \in \mathbb{R}^{n+1} \mid x \in S \}) \subset \mathbb{R}^{n+1}\)
+such that
+\(\mathrm{conv}(S) = K \cap \{ (1, x) \mid x \in \mathbb{R}^n\} \subset \mathbb{R}^n\).</p>
+
+        <p>By the previous result, if
+\(y \in K \Rightarrow y = \sum_{i=1}^m w_i y_i, \ y_i \in K, \ w_i &gt; 0, \ m \leq n+1\).
+In particular, let \(y \in \{ (1, x) \mid x \in S\} \subset K\).
+Thus, \((1,x) = \sum_{i=1}^m w_i (1, x_i), \ x_i \in S\). Therefore,
+\(\sum_{i=1}^m w_i x_i = x, \ \sum_{i=1}^m w_i = 1\) so that \(x\)
+can be represented by a convex combination with \(m \leq n+1\).</p>
+      </li>
+    </ol>
+
+    <p> ◻</p>
+  </div>
+</details>
+
+<p>This theorem is useful because it gives a finite and minimal
+representation of the elements of an infinite set. However, the choice
+of elements used to represent a given point is not uniquely determined,
+and different points may need different "basis" elements.</p>
+
+<div class="corollary">
+  <p><span id="cor:compactness_convex" label="cor:compactness_convex"></span>
+The convex hull of a compact set in \(\mathbb{R}^n\) is compact.</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Let \(S \subset \mathbb{R}^n\) be compact. Take a sequence
+\((a_k)_{k \in \mathbb{N}} \subset \mathrm{conv}(S)\). By Carathéodory’s
+theorem, each element of the sequence \(a_k \in \mathrm{conv}(S)\) can
+be written as
+\(a_k = \sum_{i=1}^{n+1}\lambda_i^k x_i^k, \ \lambda_i^k \geq 0, \ \sum_{i=1}^{n+1}\lambda_i^k = 1, \ x_i^k \in S\).</p>
+
+    <p>Let \((b_k)_{k \in \mathbb{N}}\) be the sequence
+\((\lambda_1^k, \ldots, \lambda_{n+1}^k, x_1^k, \ldots, x_{n+1}^k)\).
+Note that the sequence is bounded, since \(0 \leq \lambda_i^k \leq 1\)
+and \(x_i^k \in S\). Thus, there exists a convergent subsequence
+\(({b_k}_j)_{j \in \mathbb{N}}\) converging to
+\((\lambda_1, \ldots, \lambda_{n+1}, x_1, \ldots, x_{n+1})\) (by
+Boltzano-Weierstrass’ theorem). This limit point must satisfy
+\(\sum_{i=1}^{n+1} \lambda_i = 1, \ \lambda_i \geq 0, \ x_i \in S\).
+Therefore, \(\sum_{i=1}^{n+1} \lambda_i x_i \in \mathrm{conv}(S)\), so
+that \(\mathrm{conv}(S)\) is compact. ◻</p>
+  </div>
+</details>
+
+<h2 id="projections-and-separating-hyperplanes">Projections and separating hyperplanes</h2>
+
+<p>The proof of the separation theorem is based on the notion of the
+projection of a point onto a convex set. This idea is captured by the
+following theorem.</p>
+
+<div class="theorem">
+  <p><span id="thm:projection" label="thm:projection"></span><strong>(Projection
+onto a convex set)</strong> Let \(C \subset \mathbb{R}^n\) a closed convex set.
+Then,</p>
+
+  <ol>
+    <li>
+      <p>\(\forall x \in \mathbb{R}^n, \ \exists\) a unique \(z_0 \in C\)
+that minimizes \(\|z-x\|\) over all \(z \in C\). We call \(z_0\) the
+<em>projection of \(x\) onto \(X\)</em>.</p>
+    </li>
+    <li>
+      <p>\(z_0\) is the projection of \(x\) onto \(C\)
+\(\iff \langle y - z_0, x - z_0 \rangle \leq 0 \ \forall y \in C\).</p>
+    </li>
+  </ol>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p> </p>
+
+    <ol>
+      <li>
+        <p>Let \(w \in C\), and define the compact and convex set
+\(W = \{ z \in C \mid d(x,z) \leq d(x, w)\}\). Note that
+\(f(z) = \|x -z\|\) is continuous on \(W\), so existance of a
+minimum in \(W\) is guaranteed by Weierstrass’ theorem. Regarding
+uniqueness, suppose \(z_1, z_2 \in W\), \(z_1 \neq z_2\) are both
+minima of \(f\), so \(f(z_1) = f(z_2) = m\). Using the parallelogram
+identity, we have
+\(0 &lt; \|z_1 - z_2\|^2 = \|(z_1-x) - (z_2 -x)\|^2 = 2 \|z1-x\|^2 + 2 \|z_2 - x\|^2 - \|z_1 + z_2 - 2x\|^2 = 4m^2 - 4 \|\hat z - x\|^2\)
+for \(\hat z = \frac{z_1 + z_2}{2} \in W\) (convex combination).
+Then, \(\|\hat z - x\| = f(\hat z) &lt; m\), a contradiction.</p>
+      </li>
+      <li>
+        <p>(\(\Leftarrow\)) \(\forall y, z \in C\), we have
+\(\|y-x\|^2 = \|(y-z) - (x-z)\|^2 = \|y-z\|^2 + \|x-z\|^2 - \langle y-z, x-z \rangle \geq \|z-x\|^2 - 2 \langle y-z, x-z \rangle\).
+Therefore, if \(z\) is s.t.
+\(\langle y-z, x-z \rangle \leq 0 \ \forall y \in C\), then
+\(\|z-x\| \leq \|y-x\| \ \forall y \in C\), so \(z = z_0\).
+(\(\Rightarrow\)) Conversely, consider \(z_0\) to be the projection
+of \(x\) onto \(C\). Let \(y \in C\) and define
+\(y_\alpha = (1-\alpha) z_0 + \alpha y\) for \(\alpha &gt; 0\). Note
+that \(y_\alpha \in C\) (convex combination). Define
+\(\varphi(\alpha) = \|x- y_\alpha\|^2\). Then,
+\(\frac{\partial \varphi}{\partial \alpha}\vert_{\alpha = 0} = -2 \|x-z_0\| + 2 \langle x-z_0, x-y \rangle = -2 \langle x-z_0, y-z_0 \rangle\).
+If \(\langle x-z_0, y-z_0 \rangle &gt; 0\) for some \(y \in C\),
+\(\frac{\partial}{\partial \alpha}(\|x-y_\alpha\|^2)\vert_{\alpha = 0} &lt; 0\),
+so for \(\alpha\) small we will have \(\|x-y_\alpha\| &lt; \|x-z_0\|\),
+a contradiction.</p>
+      </li>
+    </ol>
+
+    <p> ◻</p>
+  </div>
+</details>
+
+<p>Next, we introduce the notion of separating hyperplane between two
+disjoint convex sets.</p>
+
+<div class="theorem">
+  <p><span id="thm:hyperplane_sep" label="thm:hyperplane_sep"></span><strong>(Strict hyperplane separating
+theorem)</strong> Let \(C, K \subset \mathbb{R}^n\) be nonempty disjoint convex
+sets, \(K\) compact and \(C\) closed. Then, \(\exists\) hyperplane
+\(H = \{ x \mid \langle x, b \rangle = \beta \}\) such that
+\(C \subset \mathring{h}_H^+\) and \(K \subset \mathring{h}_H^-\) (that
+is, \(H\) <em>strictly separates</em> \(C\) and \(K\)).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Define \(f \colon K \rightarrow \mathbb{R}\) such that \(f(x)\) is the
+distance from \(x \in K\) to the \(C\),
+\(f(x) = \min \{ \|x-y\| \mid y \in C\}\). By
+<a href="#thm:projection">[thm:projection]</a>,
+\(\forall x \in K \ \exists y_0 \in C\) such that
+\(f(x) = \|x - y_0\|\), where \(y_0 = y_0(x)\). Note that \(f(x)\) is
+continuous (in fact, Lipschitz): by the triangle inequality, we have
+\(d(x',y) \leq d(x',x) + d(x', y)\) and
+\(d(x,y) \leq d(x, x') + d(x, y)\) \(\forall x, x' \in K, y \in C\), so
+\(| f(x) - f(x') | \leq \|x - x'\|\). By Weierstrass’ theorem, \(f(x)\)
+has a minimum in \(K\). Let \(x_0\) be such a minimum, and note that
+\(f(x_0) = \|x_0 - y_0\| &gt; 0\) since \(K \cap C = \emptyset\). Define
+\(b = x_0 - y_0\), so
+\(0 &lt; \|b\|^2 = \langle b, x_0 - y_0 \rangle \Rightarrow \langle b, y_0 \rangle &lt; \langle b, x_0 \rangle\).</p>
+
+    <p>It only remains to show that
+\(\langle b, y_0 \rangle \geq \langle b, y \rangle \ \forall y \in C\)
+and
+\(\langle b, x_0 \rangle \leq \langle b, x \rangle \ \forall x \in K\).
+Take \(y \in C\) and define
+\(z = (1-\lambda) y_0 + \lambda y, \ \lambda \in (0, 1)\) (so
+\(z \in C\)). Then, by definition of \(y_0\),
+\(\|x_0 - z\|^2 \geq \| x_0 - y_0\|^2 \Rightarrow 0 \geq \|x_0-y_0\|^2 - \|x_0 - y_0 - \lambda (y-y_0)\|^2 \Rightarrow 0 \geq 2 \lambda \langle x_0- y_0, y -y_0 \rangle - \lambda ^2 \| y- y_0\|^2 \Rightarrow 2 \langle b, y-y_0 \rangle \leq \lambda \|y-y_0\|^2\).
+Now, take \(\lambda \to 0\), so
+\(\langle b, y \rangle \leq \langle b,y_0 \rangle \ \forall y \in C\). A
+similar argument for \(x \in K\) holds.</p>
+
+    <p>Then, take the hyperplane
+\(H = \{ x \mid \langle x, b \rangle = \beta \}\) with
+\(\beta \in (\langle b, y_0 \rangle, \langle b, x_0 \rangle)\). We have
+shown that \(\forall x \in K, \langle x, b \rangle &gt; \beta\) and
+\(\forall y \in C, \langle y, b \rangle &lt; \beta\), completing the
+proof. ◻</p>
+  </div>
+</details>
+
+<p>In fact, the separation is not only strict, but \(C\) and \(K\) are in
+disjoint closed half-spaces, so there is a gap between them. A similar
+result shows that if we have two disjoint sets which are bounded and
+open, then the existance of a separating hyperplane is also guaranteed,
+but in this case there might not be any gap between them.</p>
+
+<p>A similar result is the supporting hyperplane theorem. We first
+establish the notion of a supporting hyperplane.</p>
+
+<div class="definition">
+  <p>A closed half-space <em>supports</em> a convex set \(C\) if it contains \(C\)
+and its bounding hyperplane intersects with the boundary of \(C\).</p>
+
+</div>
+<div class="definition">
+  <p>A hyperplane <em>supports</em> \(C\) if one of its closed half-spaces supports
+\(C\).</p>
+
+</div>
+<div class="theorem">
+  <p><span id="thm:support_hyp" label="thm:support_hyp"></span><strong>(Supporting
+hyperplane theorem)</strong> Let \(C\) be a convex set, \(x_0 \in \partial C\)
+(a point on its boundary). Then, \(\exists\) a supporting hyperplane of
+\(C\) intersecting \(x_0\) such that \(C\) is contained in one of its
+closed half-spaces.</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Take a sequence \((x_k)_{k \in \mathbb{N}}\) that does not belong to
+\(\mathrm{cl}(C)\) and converges to \(x_0\). Let \(\hat x_k\) be the
+projection of \(x_k\) onto \(\mathrm{cl}(C)\). Define
+\(a_k = \frac{\hat x_k - x_k}{\|\hat x_k - x_k\|}\). By
+<a href="#thm:projection">[thm:projection]</a>,
+\(\langle y - \hat x_k, x_k - \hat x_k \rangle \leq 0, \ \forall y \in C, k \in \mathbb{N} \Rightarrow \langle y, x_k - \hat x_k \rangle \leq  \langle x_k, x_k  - \hat x_k \rangle = \|x_k - \hat x_k\|^2 + \langle \hat x_k, x_k - \hat x_k \rangle \Rightarrow \langle y, x_k - \hat x_k \rangle \leq \langle \hat x_k, x_k - \hat x_k \rangle \Rightarrow \langle \hat x_k, a_k \rangle \leq \langle y , a_k \rangle\)
+which results in the important inequality
+\(\langle x_k, a_k \rangle \leq \langle y, a_k \rangle \ \forall y \in \mathrm{cl}(C), k \in \mathbb{N}\).
+Since the sequence \((a_k)_{k \in \mathbb{N}}\) is bounded
+(\(\|a_k\| = 1 \ \forall k\)), by Boltzano-Weierstrass’ theorem there
+exists a convergent subsequence \(({a_k}_j)_{j \in \mathbb{N}}\). Let
+\(a_0\) be the limit of such a sequence. Then,
+\(\lim_{j \to \infty} \langle {x_k}_j, {a_k}_j \rangle \leq \lim_{j \to \infty} \langle y , {a_k}_j \rangle \ \Rightarrow \  \langle x_0, a_0 \rangle \leq \langle y, a_0 \rangle \ \forall y \in C\).
+We have thus constructed the supporting hyperplane
+\(H = \{ x \mid \langle x, b \rangle = \beta \}\) with
+\(b = a_0, \ \beta = \langle a_0, x_0 \rangle\), such that
+\(C \subset h_H^+\) and \(x_0 \in H\). ◻</p>
+  </div>
+</details>
+
+<h2 id="faces-of-convex-sets">Faces of convex sets</h2>
+
+<div class="definition">
+  <p>A <em>face</em> of a convex set \(C\) is a convex subset \(F \subset C\) such
+that every closed line segment in \(C\) with a relative interior point
+in \(F\) has both endpoints in \(F\).</p>
+
+</div>
+
+<p>Note that \(\emptyset\) and \(C\) are faces of \(C\).</p>
+
+<div class="definition">
+  <p>The 0-dimensional faces of \(C\) are the <em>extreme points</em> or <em>vertices</em>
+of \(C\). The 1-dim. faces are the <em>edges</em>. The (n-2)-dimensional faces
+are the <em>ridges</em>. The (n-1)-dimensional faces are the <em>facets</em>.</p>
+
+</div>
+
+<p>The definition of face implies a stronger property involving arbitrary
+convex subsets, not just line segments.</p>
+
+<div class="theorem">
+  <p>Let \(C\) be a convex set, and \(F\) be a face of \(C\). If \(D\) is a
+convex set in \(C\) (\(D \subset C\)) such that \(\mathrm{ri}(D)\) meets
+\(F\), then \(D \subset F\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Let \(z \in F \cap \mathrm{ri}(D)\). If \(x \in D, \ x \neq z\) then
+\(\exists y \in D\) such that
+\(z \in \mathrm{ri}(\{ (1 - \lambda) x + \lambda y \mid \lambda \in (0,1)\})\).
+Since \(F\) is a face, \(x, y \in F\) by definition, so
+\(D \subset F\). ◻</p>
+  </div>
+</details>
+
+<p>This allows for some interesting results that give insights into the
+nature of faces.</p>
+
+<div class="corollary">
+  <p>If \(F\) and \(F'\) are faces of a convex set \(C\) such that
+\(\mathrm{ri}(F)\) and \(\mathrm{ri}(F')\) have a point in common, then
+\(F = F'\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>\(F' \subset F\) because \(\mathrm{ri}(F')\) meets \(F\), and likewise
+\(F \subset F'\). ◻</p>
+  </div>
+</details>
+
+<div class="corollary">
+  <p><span id="cor:face_ri" label="cor:face_ri"></span> Let \(C\) be a convex
+set, and \(F\) a face of \(C\) other than \(C\) itself. Then,
+\(F \subset \mathrm{rb}(C)\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>If \(\mathrm{ri}(C)\) met \(F\), we would have \(C \subset F\), and
+therefore \(C = F\), a contradiction. Therefore,
+\(F \subset \mathrm{cl(C)} \setminus \mathrm{ri}(C) = \mathrm{rb}(C)\). ◻</p>
+  </div>
+</details>
+
+<p>The following theorem claims that a convex set can be "decomposed" in
+its faces.</p>
+
+<div class="theorem">
+  <p><span id="thm:face_partitioning" label="thm:face_partitioning"></span>
+Let \(C\) be a non-empty convex set, and \(U\) the collection of all
+relative interiors of non-empty faces of \(C\). Then, \(U\) is a
+<em>partition</em> of \(C\), that is, the sets in \(U\) are disjoint and their
+union is \(C\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Two alternative proofs are found in the references. They require further
+development of the theory of faces not covered here. ◻</p>
+  </div>
+</details>
+
+<h2 id="sec:polyh">Polyhedra and polytopes</h2>
+
+<div class="definition">
+  <p><span id="def:polyhedral" label="def:polyhedral"></span> A <em>polyhedral</em>
+set in \(\mathbb{R}^n\) is a set which can be expressed as the
+intersection of some finite collection of closed half-spaces, that is,
+as the set \(\{ x \in \mathbb{R}^n \mid \mathbf{B}x \leq b\}\) for some
+matrix \(\mathbf{B} \in \mathcal{M}_{m \times n}(\mathbb{R})\) and some
+vector \(b \in \mathbb{R}^n\).</p>
+
+</div>
+
+<p>By corollary <a href="#thm:inequalities-convex">[thm:inequalities-convex]</a>, we
+know that polyhedral sets must be convex. They can also be unbounded.
+Note also that the class of convex sets defined as in
+<a href="#thm:inequalities-convex">[thm:inequalities-convex]</a> was more
+general, and in this case we consider only a <em>finite</em> number of <em>closed</em>
+half-spaces.</p>
+
+<p>Note that equalities can also be included in the previous definition,
+since an equality can always be expressed as two simultaneous
+inequalities. Therefore, all affine sets are polyhedral. Furthermore,
+note that they can be unbounded.</p>
+
+<p>Polyhedral sets characterize convex sets which have a "finite"
+external representation. However, a "finite" internal representation
+can also be considered to define <em>polytopes</em>.</p>
+
+<div class="definition">
+  <p><span id="def:polytope" label="def:polytope"></span> A <em>polytope</em> is a
+set which is the convex hull of a finite number of points.</p>
+
+</div>
+
+<p>We refer to <em>k-polytopes</em> as polytopes of dimension \(k\). It is clear
+that polytopes are convex sets, and are compact by corollary
+<a href="#cor:compactness_convex">[cor:compactness_convex]</a>.</p>
+
+<p>It turns out that polytopes are precisely bounded polyhedra. A proof of
+this fact can be found in [@brondsted_introduction_1983], chapter 8.</p>
+
+<p>The following is a nice property of polytopes.</p>
+
+<div class="proposition">
+  <p><span id="prop:vertex_centroid" label="prop:vertex_centroid"></span> The
+vertex centroid of a polytope is contained inside it.</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Let the polytope be \(\mathrm{conv}(\{b_1, \ldots, b_m\})\), with
+\(b_i\) its vertices. The vertex centroid is defined as the arithmetic
+mean of the vertices, that is,
+\(v_{\text{centre}} = \frac{1}{m}\sum_{i=1}^m b_i\). Note that this is a
+convex sum (\(\lambda_i = \frac{1}{m}\)), so by
+<a href="#thm:convex_closed">[thm:convex_closed]</a> \(v_{\text{centre}}\) must
+belong to \(\mathrm{conv}(\{b_1, \ldots, b_m\})\). ◻</p>
+  </div>
+</details>
+
+<p>Finally, we introduce an important type of polytope.</p>
+
+<div class="definition">
+  <p>An <em>m-simplex</em> is a set which is the convex hull of a set of \(m+1\)
+affinely independent points.</p>
+
+</div>
+
+<p>Note that simplices are polytopes, but not all polytopes are simplices.
+As an example, consider that triangles are 2-simplices, while squares
+are 2-polytopes but not simplices.</p>
+
+<p>We can explicitly count the number of k-faces of an n-simplex.</p>
+
+<div class="lemma">
+  <p>The number of k-faces of an n-simplex is given by \(\binom{n+1}{k+1}\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>By induction. Denote by \(S(n,k)\) the number of k-faces of an
+n-simplex. The base case is trivial: a 1-simplex (segment) has 2 0-faces
+and 1 1-face, so
+\(S(1,0) = 2 = \binom{2}{1}, \ S(1,1) = 1 = \binom{2}{2}\). Next, assume
+that \(S(n-1, k) = \binom{(n-1) + 1}{k+1} = \binom{n}{k+1}\). Now,
+consider an n-simplex by adding an affinely independent vertex \(v\) to
+an existing (n-1)-simplex, named as <em>base</em>. Its total number of k-faces
+will be the number of k-faces that do not include \(v\) plus the number
+of k-faces that do include \(v\). The first is given precisely by the
+number of k-faces of the base, \(S(n-1, k)\). To count the latter,
+consider that the k-faces that do not include \(v\) are formed by taking
+the (k-1)-faces of the base and joining them with \(v\), so their count
+is given by \(S(n-1, k-1)\). Thus,
+\(S(n, k) = S(n-1, k) + S(n-1, k-1) = \binom{n}{k+1} + \binom{n}{k} = \binom{n+1}{k+1}\). ◻</p>
+  </div>
+</details>
+
+<h2 id="cells-and-triangulations">Cells and triangulations</h2>
+
+<div class="definition">
+  <p><span id="def:cell" label="def:cell"></span> A <em>cell</em> is the relative
+interior of a convex polyhedron.</p>
+
+</div>
+
+<p>Given a subset \(S \subset \mathbb{R}^n\), if its convex hull results in
+a polyhedron, we say that
+\(\mathrm{cell}(S) = \mathrm{ri}(\mathrm{conv}(S))\). Then, any face of
+a convex polyhedron is also a cell.</p>
+
+<div class="definition">
+  <p><span id="def:cell_complex" label="def:cell_complex"></span> A <em>cell
+complex</em> is a finite collection of pairwise disjoint cells such that
+every face of every cell is in the collection.</p>
+
+</div>
+<div class="definition">
+  <p><span id="def:triangulation" label="def:triangulation"></span> A
+<em>triangulation</em> \(T\) of a finite point set \(S\) is a cell complex
+whose union is \(\mathrm{conv}(S)\) and whose vertex set is \(S\).</p>
+
+</div>
+
+<p>Note that any cell of a triangulation is \(\mathrm{cell}(R)\) for some
+\(R \subset S\). Also, observe that a triangulation cannot be unbounded.</p>
+
+<div class="definition">
+  <p><span id="def:proper_triang" label="def:proper_triang"></span> A <em>proper
+triangulation</em> is a triangulation where all cells are simplices.</p>
+
+</div>
+
+<p>It is important to note that all triangulations can be <em>completed</em> to a
+proper triangulation by appropriately subdividing nonsimplical cells.</p>
+
+<p>Finally, it is enlightening to understand that a compact convex
+polyhedron can be partitioned not just into a cell complex, but into a
+<em>triangulation of the set of its vertices</em>: each cell corresponds to the
+realitive interior of a face of the polyhedron, as theorem
+<a href="#thm:face_partitioning">[thm:face_partitioning]</a> suggests.</p>
+
+<h2 id="references">References</h2>
+<ul>
+  <li>R. T. Rockafellar, <em>Convex analysis</em>, Princeton University Press, 1997.</li>
+  <li>A. Brondsted, <em>An introduction to convex polytopes</em>, Springer, 1983.</li>
+</ul>
+
+
+
+
+</div>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <!-- <small class="text-muted mb-2"> -->
+  <!--   <i class="fas fa-code"></i> with <i class="fas fa-heart"></i> -->
+  <!--   by <strong>Fernando Muñoz</strong> -->
+  <!-- </small> -->
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="https://www.github.com/ferxinii"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/fernandomuñozpuente"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a>
+
+</div>
+
+  <!---->
+  <!---->
+  <!-- <small id="attribution"> -->
+  <!--   theme <a href="https://github.com/yousinix/portfolYOU">portfolYOU</a> -->
+  <!-- </small> -->
+
+</footer>
+
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+</body>
+
+</html>

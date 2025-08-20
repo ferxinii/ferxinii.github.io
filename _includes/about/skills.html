@@ -1,0 +1,32 @@
+<div class="col-lg">
+  <h2 class="mb-3">{{ include.title }}</h2>
+
+  {% for skill in include.source %}
+  
+  <!-- Skill name full width -->
+  <p class="mb-1">{{ skill.name }}</p>
+
+  <!-- Boxes and comment on the same row -->
+  <div class="row align-items-center mb-0">
+    <div class="col-4">
+        <div class="skill-box-row mb-0">
+            {% for i in (1..6) %}
+                <div class="skill-box
+                    {% if i <= skill.level %}filled bg-{{ skill.color | default: 'primary' }}{% endif %}"
+                    style="animation-delay: {{ i | times: 0.25 }}s;">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="col-7 text-right">
+      <p class="mb-0 text-muted">{{ skill.comment-right }}</p>
+    </div>
+  </div>
+
+  <!-- Comment below full width -->
+  <p class="text-muted">{{ skill.comment-bottom }}</p>
+
+  {% endfor %}
+</div>
+

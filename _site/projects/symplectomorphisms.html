@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Exact symplectomorphisms &amp; convex billiards">
+  <meta property="og:description" content="Welcome to my page! Here I present some of my work :books:.">
+  <meta property="og:image" content="/assets/images/projects/symplectomorphisms/front2.png">
+
+  <title>Exact symplectomorphisms &amp; convex billiards</title>
+  <meta name="description" content="Welcome to my page! Here I present some of my work :books:.">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- KaTeX  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+              // ...options...
+          });
+      });
+  </script>
+
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"> -->
+  <!-- <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script> -->
+  <!-- <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" -->
+  <!-- onload="renderMathInElement(document.body);"></script> -->
+
+</head>
+
+
+<body class="h-100 d-flex flex-column">
+<!-- <body class="page.layout"> -->
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/"><h5><b>ferxinii</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto">
+<a class="nav-item nav-link active" href="/projects/">Projects</a>
+
+      <a class="nav-item nav-link " href="/blog/">Blog</a>
+
+      <a class="nav-item nav-link " href="/about/">About</a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <h1 id="exact-symplectomorphisms-and-an-application-to-convex-billiards">Exact symplectomorphisms and an application to convex billiards</h1>
+
+<p>In this work, which was the final project for the <em>Hamiltonian systems</em> course of my Master’s, we first explore some properties of exact symplectomorphisms, with the ultimate goal of establishing a relationship between the critical points of their generating function and the fixed points of the corresponding discrete dynamical map. To this end, notions of differential geometry are developed, and we use variational methods (generalized Lagrange multipliers) to obtain the main results. In the second part, we briefly focus on the Billiard map and study it from the point of view of the theory developed previously. In particular, we give a precise meaning to its generating function and see how this allows us to establish the existance of periodic orbits. Finally, this framework allows us to understand the length spectrum from a symplectic point of view.</p>
+
+<div class="list-group my-3">
+<a class="list-group-item active disabled text-white">Table of Contents</a>
+        <a class="list-group-item list-group-item-action toc-top" href="#exact-symplectomorphisms">
+          Exact symplectomorphisms
+
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#preliminaries-transversality-and-lagrange-multipliers">
+          Preliminaries: Transversality and Lagrange multipliers
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#symplectic-manifolds">
+          Symplectic manifolds
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#canonical-symplectic-form-on-the-cotangent-bundle">
+          Canonical symplectic form on the cotangent bundle
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#exact-symplectomorphisms-and-primitive-functions">
+          Exact symplectomorphisms and primitive functions
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#symplectic-product">
+          Symplectic product
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#action-of-periodic-orbits">
+          Action of periodic orbits
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#variational-principles-in-cotangent-bundles">
+          Variational principles in cotangent bundles
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-top" href="#convex-billiards">
+          Convex billiards
+
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#the-billiard-map">
+          The billiard map
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#2-dimensional-case">
+          2-dimensional case
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#connecting-orbits">
+          Connecting orbits
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#periodic-orbits">
+          Periodic orbits
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#length-spectrum">
+          Length Spectrum
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-top" href="#references">
+          References
+
+        </a>
+      
+
+</div>
+
+<!---->
+<!---->
+<!-- <div class="list-group my-3"> -->
+<!---->
+<!---->
+<!--     <a class="list-group-item active disabled text-white">Table of Contents</a> -->
+<!---->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#exact-symplectomorphisms">**Exact symplectomorphisms**</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#preliminaries-transversality-and-lagrange-multipliers">
+Preliminaries: Transversality and Lagrange multipliers</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#symplectic-manifolds">
+Symplectic manifolds</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#canonical-symplectic-form-on-the-cotangent-bundle">
+Canonical symplectic form on the cotangent bundle</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#exact-symplectomorphisms-and-primitive-functions">
+Exact symplectomorphisms and primitive functions</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#symplectic-product">
+Symplectic product</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#action-of-periodic-orbits">
+Action of periodic orbits</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#variational-principles-in-cotangent-bundles">
+Variational principles in cotangent bundles</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#convex-billiards">
+**Convex billiards**</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#the-billiard-map">
+The billiard map</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#2-dimensional-case">
+2-dimensional case</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#connecting-orbits">
+Connecting orbits</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#periodic-orbits">
+Periodic orbits</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#length-spectrum">
+Length Spectrum</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#references">
+**References**</a> -->
+<!---->
+<!--    -->
+<!---->
+<!-- </div> -->
+<!---->
+
+<hr>
+<h1 id="exact-symplectomorphisms">Exact symplectomorphisms</h1>
+
+<p>In this chapter we introduce symplectic geometry, and dive into some
+properties of primitive functions of exact symplectomorphisms. By the
+end we relate some of the dynamics of such maps with their primitive
+functions via some variational principles.</p>
+
+<h2 id="preliminaries-transversality-and-lagrange-multipliers">Preliminaries: Transversality and Lagrange multipliers</h2>
+
+<p>In this subsection we present some results that will be used in the
+development of the chapter, in particular, regarding regular values of
+maps and the method of Lagrange multipliers in manifolds. We will not
+prove these results, but their proofs can be found in
+[@abraham2012manifolds].</p>
+
+<div class="definition">
+  <p>A function \(f \colon \mathcal{M} \to \mathcal{N}\) is called an
+<em>immersion</em> if \(\mathrm{d}f_p\) is injective
+\(\forall p \in \mathcal{M}\). That is, if
+\(\mathrm{rank}(Df) = \mathrm{dim}(\mathcal{M})\).</p>
+
+</div>
+<div class="definition">
+  <p>A function \(f \colon \mathcal{M} \to \mathcal{N}\) is called a
+<em>submersion</em> if \(\mathrm{d}f_p\) is surjective
+\(\forall p \in \mathcal{M}\). That is, if
+\(\mathrm{rank}(Df) = \mathrm{dim}(\mathcal{N})\).</p>
+
+</div>
+<div class="definition">
+  <p>A point \(n \in \mathcal{N}\) is a regular value of \(f\) if
+\(\forall p \in f^{-1}(\mathcal{N}), \ \mathrm{d}f_p\) is surjective.
+That is, if all the points of the preimage of \(n\) are <em>regular points</em>
+of f.</p>
+
+</div>
+
+<p>The following is a useful theorem we will not prove.</p>
+
+<div class="theorem">
+  <p><span id="thm:regular_value" label="thm:regular_value"></span><strong>(Regular
+value theorem)</strong> Let \(f \colon \mathcal{M} \to \mathcal{N}\) be a
+smooth map between smooth manifolds. For every regular value
+\(y \in \mathcal{N}\), \(S=f^{-1}(y)\) is either \(\emptyset\) or a
+smooth submanifold of \(\mathcal{M}\) with
+\(\mathrm{dim}(S) = \mathrm{dim}(N) - \mathrm{dim}(M)\) and
+\(T_x S \cong \mathrm{ker}(\mathrm{d}f)_x\).</p>
+
+</div>
+<div class="definition">
+  <p>A mapping \(f \colon \mathcal{M} \to \mathcal{N}\) is <em>transversal to
+the submanifold \(\mathcal{Z} \subset \mathcal{N}\)</em> if the
+<em>transversality equation</em>
+\(\mathrm{Im}(\mathrm{d}f_x) + T_y \mathcal{Z} = T_y \mathcal{N}\) holds
+at every \(x = f^{-1}(y) \in f^{-1}(\mathcal{Z})\). We denote it as
+\(f \pitchfork \mathcal{Z}\).</p>
+
+</div>
+<div class="example">
+  <p>If each point of \(\mathcal{Z}\) is a regular value of \(f\), then
+\(f \pitchfork \mathcal{Z}\).</p>
+
+</div>
+<div class="example">
+  <p>If \(f\) is the inclusion map \(i \colon \mathcal{M} \to \mathcal{N}\),
+the transversality equation becomes
+\(T_x \mathcal{M} + T_{x} \mathcal{Z} = T_x \mathcal{N}\)</p>
+
+</div>
+
+<p>The following is a generalization of the regular value theorem.</p>
+
+<div class="theorem">
+  <p><span id="thm:gen_regular_value" label="thm:gen_regular_value"></span>
+Let \(f \colon \mathcal{M} \to \mathcal{N}\) smooth, \(\mathcal{Z}\) a
+submanifold of \(\mathcal{N}\). If \(f \pitchfork \mathcal{Z}\), then
+\(f^{-1}(\mathcal{Z})\) is a submanifold of \(\mathcal{M}\), and
+\(\mathrm{codim}_{\mathcal{M}}(f^{-1}(\mathcal{Z})) = \mathrm{codim}_{\mathcal{N}}(Z)\).</p>
+
+</div>
+
+<p>A fact about transversal submanifolds is that if \(f\) is transversal to
+two submanifolds of \(\mathcal{M}\), then it is also transversal to
+their intersection.</p>
+
+<p>We now have all the pieces to state the generalized Lagrange multipliers
+theorem and a useful corollary.</p>
+
+<div class="theorem">
+  <p><strong>(Lagrange multipliers)</strong> Let \(g \colon \mathcal{M} \to \mathcal{P}\)
+be a smooth map, \(p \in P\) a regular value of \(g\),
+\(\mathcal{N} = g^{-1}(p)\), and \(f \colon \mathcal{M} \to \mathbb{R}\)
+be \(\mathcal{C}^r, r \geq 1\). Then, a point \(n \in \mathcal{N}\) is a
+critical point of \(f|_N\) if \(\exists \lambda \in T_p^* \mathcal{P}\)
+such that \(\mathrm{d}f_n = \lambda \circ \mathrm{d}g_n\). We call
+\(\lambda\) a <em>Lagrange multiplier</em>.</p>
+
+</div>
+
+<p>A similar result holds when \(\mathcal{N}\) is the preimage of a
+transversal manifold of \(g\), not just a regular value.</p>
+
+<div class="corollary">
+  <p><span id="cor:lagrange" label="cor:lagrange"></span> Let
+\(g \colon \mathcal{M} \to \mathcal{P}\) smooth, \(\mathcal{Z}\) a
+submanifold of \(P\). Suppose \(g \pitchfork \mathcal{Z}\), and let
+\(\mathcal{N} = g^{-1} (\mathcal{Z})\). Let
+\(f \colon \mathcal{M} \to \mathbb{R}\) be \(\mathcal{C}^r, r \geq 1\).
+Let \(E_{g(n)}\) be a closed component to \(T_{g(n)}\mathcal{Z}\) in
+\(T_{g(n)}\mathcal{P}\), so we have
+\(T_{g(n)} \mathcal{P} = T_{g(n)} \mathcal{Z} \oplus E_{g(n)}\), with
+\(\pi \colon T_{g(n)}\mathcal{P} \to E_{g(n)}\) the projection. Then a
+point \(n \in \mathcal{N}\) is a critical point of \(g|_{\mathcal{N}}\)
+if \(\exists \lambda \in E^*_{g(n)}\) such that
+\(\mathrm{d}f_n = \lambda \circ \pi \circ \mathrm{d}g_n\).</p>
+
+</div>
+
+<p>Note that in the previous corollary, \(E_{g(n)}\) can be interpreted as
+the <em>normal</em> component to \(\mathcal{Z}\) in \(\mathcal{P}\).</p>
+
+<h2 id="symplectic-manifolds">Symplectic manifolds</h2>
+
+<div class="definition">
+  <p>A 2-form \(w\) on a manifold \(\mathcal{M}\) is a <em>symplectic form</em> if
+it is closed (\(\mathrm{d}w = 0\)) and nondegenerate
+(\(\forall \alpha \ \text{1-form}, \ \exists ! X \ \text{vector field on} \ M \ \text{s.t.} \ \iota_X w = \alpha\)).</p>
+
+</div>
+
+<p>Note that \(\mathrm{d}\) is the <em>exterior derivative</em> and \(\iota_X w\)
+is the <em>contraction</em> or <em>interior product</em> of \(w\) with \(X\). Since
+the 2-form is nondegenerate, the dimension of a symplectic manifold must
+be even \(\mathrm{dim}(\mathcal{M}) = 2n\). Another consequence is that
+it has a canonical volume form \(w^n\), and hence \(\mathcal{M}\) must
+be orientable.</p>
+
+<div class="definition">
+  <p>A <em>symplectic manifold</em> is a pair \((\mathcal{M}, w)\) such that
+\(\mathcal{M}\) is a differential manifold and \(w\) is a symplectic
+form on \(\mathcal{M}\).</p>
+
+</div>
+<div class="example">
+  <p>\(\mathcal{M}= \mathbb{R}^{2n}\) with linear coordinates
+\(x_1, \ldots, x_n, y_1, \ldots, y_n\) and the form
+\(\mathrm{d}x \wedge \mathrm{d}y = \sum_{i=1}^n \mathrm{d}x_i \wedge \mathrm{d}y_i\)
+is a symplectic manifold.</p>
+
+</div>
+<div class="definition">
+  <p>Let \((\mathcal{M}_1, w_1)\), \((\mathcal{M}_2, w_2)\) be
+\(2n\)-dimensional symplectic manifolds, and
+\(\varphi \colon \mathcal{M}_1 \to \mathcal{M}_2\) a diffeomorphism. We
+say that \(\varphi\) is a <em>symplectomorphism</em> if
+\(\varphi^* w_2 = w_1\).</p>
+
+</div>
+
+<p>Recall that by definition of pullback, \(\varphi^* w_2 = w_1\) is the
+same as saying that for vectors \(u,v \in T_p \mathcal{M}_1\) we have
+that
+\((w_1)_p (u,v) = (w_2)_{\varphi(p)}(\mathrm{d} \varphi_p(u), \mathrm{d} \varphi_p(v))\).</p>
+
+<p>Classification of symplectic manifolds up to symplectomorphism, at least
+locally, is a consequence of the following theorem. It turns out that
+just as any \(n\) dimensional smooth manifold is locally diffeomorphic
+to \(\mathbb{R}^n\), any \(2n\)-symplectic manifold is locally
+symplectomorphic to \((\mathbb{R}^{2n}, w_0)\), so the only local
+invariant is the dimension.</p>
+
+<div class="theorem">
+  <p><strong>(Darboux’s)</strong> Let \((\mathcal{M}, w)\) be a symplectic manifold, and
+\(p \in \mathcal{M}\). Then there is a coordinate chart
+\((\mathcal{U}, x_1, \ldots, x_n, y_1, \ldots, y_n)\) centered at \(p\)
+such that, on \(\mathcal{U}\),
+\(w = \mathrm{d}x \wedge \mathrm{d}y = \sum_{i=1}^n \mathrm{d}x_i \wedge \mathrm{d}y_i\).</p>
+
+</div>
+
+<p>This chart is called a <em>Darboux chart</em>, and the theorem implies that
+symplectic manifolds are all locally symplectomorphic to
+\((\mathbb{R}^{2n}, w_0)\). Note that by the Poincaré lemma, locally
+there always exists a 1-form \(\alpha\) such that
+\(\mathrm{d}\alpha = w\). In local coordinates \((x,y)\),
+\(\alpha = -y \mathrm{d}x\).</p>
+
+<h2 id="sec:canonical_cotangent">Canonical symplectic form on the cotangent bundle</h2>
+
+<p>Let \(\mathcal{X}\) be a smooth manifold of dimension \(n\), and let
+\(\mathcal{M} = T^* \mathcal{X}\) be its cotangent bundle. Let
+\((\mathcal{U}, x_1, \ldots, x_n)\) be a coordinate chart for
+\(\mathcal{U} \subset \mathcal{X}\), and
+\((T^* \mathcal{U}, x_1, \ldots, x_n, \xi_1 , \ldots, \xi_n)\) be the
+induced coordinate chart on \(T^* \mathcal{U} \subset \mathcal{M}\), so
+if \(p \in \mathcal{U}\) then \(\xi \in T^*_p \mathcal{U}\) can be
+expressed as \(\xi = \sum_{i=1}^n \xi_i (\mathrm{d}x_i)_p\).</p>
+
+<div class="definition">
+  <p>The <em>tautological 1-form</em> or <em>Liouville form</em> on \(T^* \mathcal{U}\) is
+\(\alpha = \sum_{i=1}^n \xi_i \mathrm{d}x_i\).</p>
+
+</div>
+<div class="definition">
+  <p>The <em>canonical symplectic form</em> on \(T^* \mathcal{U}\) is
+\(w = -\mathrm{d} \alpha\), so
+\(w = \mathrm{d}x \wedge \mathrm{d} \xi = \sum_{i=1}^n \mathrm{d}x_i \wedge \mathrm{d} \xi_i\).</p>
+
+</div>
+
+<p>It can be checked that these forms are intrinsically defined, so they do
+not depend on the coordinate charts.</p>
+
+<p>To give an intepretation to the Liouville form, it may be useful to give
+an alternative coordinate free definition. Let
+\(\pi \colon T^*\mathcal{X} \to \mathcal{X} \colon p = (x, \xi) \to x\)
+be the natural projection. Then,
+\(\alpha_p = \xi \circ \mathrm{d} \pi_p\). Note that
+\(\mathrm{d}\pi_p \colon T_p(T^*\mathcal{X}) \to T_{\pi (\rho)} \mathcal{X}\).
+Then, we say that the value of \(\alpha\) on a vector
+\(v \in T_{(x, \xi)} ( T^*\mathcal{X})\) is equal to the value of the
+1-form \(\xi\) on the projection of \(v\) to the tangent space
+\(T_x \mathcal{X}\). It is called tautological because it naturally
+identifies the evaluation of \(\xi\) on vectors tangent to
+\(\mathcal{X}\).</p>
+
+<p>Moreover, \(\alpha\) is the unique 1-form on \(\mathcal{M}\) satisfying
+\(\rho^* \alpha = \rho, \ \forall \rho \in \Omega^1(\mathcal{M})\).</p>
+
+<p>There are more general symplectic manifolds with the property that
+\(w = \mathrm{d} \alpha\) for some 1-form \(\alpha\), not just cotangent
+bundles.</p>
+
+<div class="definition">
+  <p>A symplectic manifold \((\mathcal{M}, w)\) is called <em>exact</em> if
+\(\exists\) a 1-form \(\alpha\) such that \(w = \mathrm{d} \alpha\).</p>
+
+</div>
+
+<p>An interesting result is that exact symplectic manifolds cannot be
+compact and without a boundary.</p>
+
+<h2 id="exact-symplectomorphisms-and-primitive-functions">Exact symplectomorphisms and primitive functions</h2>
+
+<div class="definition">
+  <p>A symplectomorphism \(F \colon \mathcal{M} \to \mathcal{M}\) on an exact
+symplectic manifold \((\mathcal{M}, \mathrm{d}\alpha)\) is called
+<em>exact</em> if \(\exists\) a function
+\(S \colon \mathcal{M} \to \mathbb{R}\) such that
+\(F^* \alpha - \alpha = \mathrm{d}S\). \(S\) is the <em>generating
+function</em> or <em>primitive function</em> of \(F\), denoted as
+\(\mathrm{pf}(F) = S\).</p>
+
+</div>
+
+<p>Note that \(\mathrm{pf}(F) = S\) is defined up to an additive constant.</p>
+
+<div class="definition">
+  <p>A symplectomorphism \(F \colon \mathcal{M} \to \mathcal{M}\) on an exact
+symplectic manifold \((\mathcal{M}, \mathrm{d}\alpha)\) is called an
+<em>actionmorphism</em> if \(F^* \alpha = \alpha\).</p>
+
+</div>
+
+<h3 id="composition-formulae">Composition formulae</h3>
+
+<p>We now propose some useful formulae to compute primitive functions of
+different combinations of exact symplectomorphisms.</p>
+
+<div class="proposition">
+  <p><span id="prop:composition" label="prop:composition"></span> Let
+\((\mathcal{M}, \mathrm{d}\alpha)\) be an exact symplectic manifold, and
+\(F, G \colon \mathcal{M} \to \mathcal{M}\) two exact symplectomorphisms
+with \(\mathrm{pf}(F) = S\), \(\mathrm{pf}(G) = T\). Then, up to an
+additive constant:</p>
+
+  <ol>
+    <li>
+      <p>\(\mathrm{pf}(G \circ F) = \mathrm{pf}(F) + \mathrm{pf}(G) \circ F = S + T \circ F\).</p>
+    </li>
+    <li>
+      <p>\(\mathrm{pf}(F^{-1}) = -\mathrm{pf}(F) \circ F^{-1} = -S \circ F^{-1}\).</p>
+    </li>
+    <li>
+\[\begin{aligned}
+                \mathrm{pf}(G^{-1} \circ F \circ G) &amp;= \mathrm{pf}(F) \circ G + \mathrm{pf}(G) - \mathrm{pf}(G)\circ G^{-1} \circ F \circ G \\
+                &amp;= S \circ G + T - T \circ G^{-1} \circ F \circ G.
+              \end{aligned}\]
+    </li>
+  </ol>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>A simple computation using properties of the pullback gives
+\((G \circ F)^* \alpha = F^* \circ G^* \alpha = F^* (\alpha + \mathrm{d}T) = F^* \alpha + F^* \mathrm{d}T = (\alpha + \mathrm{d}S) + \mathrm{d}(F^* T) = \alpha + \mathrm{d}S + \mathrm{d}(T \circ F)\),
+directly implying the first identity:
+\((G \circ F)^* \alpha - \alpha = \mathrm{d}(S + T \circ F)\).</p>
+
+    <p>For the second identity, let \(G = F^{-1} \circ F^{-1}\) and use the
+previous identity two times:<br>
+\(\mathrm{pf}(F^{-1}) = \mathrm{pf}(G \circ F) = S + \mathrm{pf}(F^{-1} \circ F^{-1})\circ F = S + \left[\mathrm{pf}(F^{-1}) + \mathrm{pf}(F^{-1})\circ F^{-1} \right]\circ F = S + \mathrm{pf}(F^{-1}) \circ F + \mathrm{pf}(F^{-1}) \implies \mathrm{pf}(F^{-1})\circ F = -S\).</p>
+
+    <p>For the third, let \(\hat F = G, \ \hat G = G^{-1} \circ F\), and use
+both identities:
+\(\mathrm{pf}(G^{-1} \circ F \circ G) = \mathrm{pf}(\hat G \circ \hat F) = \mathrm{pf}(\hat F) + \mathrm{pf}(\hat G) \circ \hat F = \mathrm{pf}(G) + \left[ \mathrm{pf}(F) + \mathrm{pf}(G^{-1}) \circ F \right] \circ G = T + S \circ G - T \circ G^{-1} \circ F \circ G\). ◻</p>
+  </div>
+</details>
+
+<p>As a small parenthesis, this allows us to prove an interesting fact
+about primitive functions. In particular, that given a primitive
+function the corresponding symplectomorphism is not uniquely determined.
+This is why we prefer to call them <em>primitive functions</em> and not
+<em>generating functions</em>.</p>
+
+<div class="proposition">
+  <p>Let \((\mathcal{M}, \mathrm{d}\alpha)\) be an exact symplectic manifold,
+and \(F \colon \mathcal{M} \to \mathcal{M}\) an exact symplectomorphism
+with \(\mathrm{pf}(F) = S\). Then, \(F\) is determined by \(S\) up to
+actionmorphisms by the left, i.e.,
+\(\{ G \mid \mathrm{pf}(G) = S\} = \{ L \circ F \mid \mathrm{pf}(L) = 0\}\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Let \(G\) s.t. \(\mathrm{pf}(G) = S\). Define \(L = G \circ F^{-1}\).
+Then, by <a href="#prop:composition">[prop:composition]</a>,
+\(\mathrm{pf}(L) = \mathrm{pf}(G \circ F^{-1}) = \mathrm{pf}(F^{-1}) + \mathrm{pf}(G) \circ F^{-1} = -S \circ F^{-1} + S \circ F^{-1} = 0\). ◻</p>
+  </div>
+</details>
+
+<p>In order to completely determine \(F\) from \(S\) we need additional
+information. Details can be found in [A. HARO PHD].</p>
+
+<p>Now we consider the action of \(F^n\).</p>
+
+<div class="proposition">
+  <p><span id="prop:primitive_iterates" label="prop:primitive_iterates"></span> Let
+\((\mathcal{M}, \mathrm{d}\alpha)\) be an exact symplectic manifold, and
+\(F \colon \mathcal{M} \to \mathcal{M}\) an exact symplectomorphism with
+\(\mathrm{pf}(F) = S\). Then,
+\(\mathrm{pf}(F^n) = \sum_{i=0}^{n-1} S \circ F^i\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>By induction. The base case is simply \(\mathrm{pf}(F) = S\). The
+induction hypothesis is that
+\(\mathrm{pf}(F^{n-1}) = \sum_{i=0}^{n-2}S \circ F^i\). Now, use
+<a href="#prop:composition">[prop:composition]</a> on
+\(\mathrm{pf}(F^n) = \mathrm{pf}(F \circ F^{n-1})\), and we have that</p>
+
+    <p>\(\mathrm{pf}(F \circ F^{n-1}) = \mathrm{pf}(F^{n-1}) + \mathrm{pf}(F) \circ F^{n-1} = \sum_{i=0}^{n-2}S \circ F^i + S \circ F^{n-1} = \sum_{i=0}^{n-1}S \circ F^i\). ◻</p>
+  </div>
+</details>
+
+<p>This result allows for the definition of an intrinsic quantity of
+periodic orbits of the symplectomorphism \(F\) as we will discuss in
+section <a href="#sec:action_po">1.6</a>.</p>
+
+<h2 id="sec:sym_prod">Symplectic product</h2>
+
+<p>Given \(n\) symplectic manifolds, we wonder about the nature of their
+direct product.</p>
+
+<div class="proposition">
+  <p>Given \((\mathcal{M}_1, w_1), \ldots, (\mathcal{M}_n, w_n)\) a
+collection of \(n\) symplectic manifolds, then their direct product
+\(\mathcal{M} = \mathcal{M}_1 \times \ldots \times \mathcal{M}\) is a
+symplectic manifold with symplectic form
+\(\Omega = \sum_{i=1}^q \pi_i^* w_i\), with
+\(\pi_i \colon \mathcal{M} \to \mathcal{M}_i\) the projection map.
+Moreover, if they are exact with \(w_i = \mathrm{d} \alpha_i\), then
+\(\mathcal{M}\) is also exact with \(\Omega = \mathrm{d}A\),
+\(A = \sum_{i=1}^q \pi_i^* \alpha_i\).</p>
+
+</div>
+
+<p>In this manner we can also define a symplectomorphism on the direct
+product given a collection of symplectomorphisms on the original
+manifolds.</p>
+
+<div class="proposition">
+  <p><span id="prop:pf_product_mani" label="prop:pf_product_mani"></span>
+Consider the product of \(n\) exact symplectic manifolds
+\(\mathcal{M} = \prod_{i=1}^{q} \mathcal{M}_i\), with symplectic form
+\(\Omega = \mathrm{d}A = \sum_{i=1}^q \pi_i^* \mathrm{d}\alpha_i\). Let
+\(F_i \colon \mathcal{M}_i \to \mathcal{M}_i\) be a collection of \(q\)
+exact symplectomorphisms with \(\mathrm{pf}(F_i) = S_i\). Then,
+\(F = F_1 \times \ldots \times F_q\) is an exact symplectomorphism on
+\(\mathcal{M}\), with
+\(\mathrm{pf}(F) = S = \sum_{i=1}^q S_i \circ \pi_i\).</p>
+
+</div>
+
+<p>This allows for an alternative view of periodic orbits using a parallel
+shooting approach.</p>
+
+<div class="proposition">
+  <p><span id="prop:periodic_product_mani" label="prop:periodic_product_mani"></span> Given a diffeomorphism
+\(F \colon \mathcal{M} \to \mathcal{M}\), we define on
+\(\mathcal{M}^q = \prod_{i=0}^{q-1} \mathcal{M}\) the diffeomorphism
+\(F_q \colon \mathcal{M}^q \to \mathcal{M}^q\),
+\(F_q(z_0, \ldots, z_{q-1}) = (F(z_{q-1}), F(z_0), \ldots, F(z_{q-2}))\).
+Then,</p>
+
+  <ol>
+    <li>
+      <p>Fixed points of \(F_q\) are in correspondance with \(q\)-periodic
+points of \(F\) (\(q\)-to-1).</p>
+    </li>
+    <li>
+      <p>If \(F\) is exact with \(\mathrm{pf}(F) = S\), then \(F_q\) is also
+exact with
+\(\mathrm{pf}(F_q) = S_q \colon \mathcal{M}^q \to \mathbb{R}\),
+\(S_q(z_0, \ldots, z_{q-1}) = \sum_{i=0}^{q-1} S(z_i)\).</p>
+    </li>
+  </ol>
+
+</div>
+
+<h2 id="sec:action_po">Action of periodic orbits</h2>
+
+<div class="definition">
+  <p>Given a \(q\)-periodic point \(z \in \mathcal{M}\) on an exact
+symplectic manifold of the exact symplectomorphism \(F\), we define the
+<em>action along the orbit of \(z\)</em> as
+\(S_q(z) = \mathrm{pf}(F^q)(z) = \sum_{i=0}^{q-1}S(F^i(z))\). The
+<em>averaged action</em> is then \(\hat S_q (z) = \frac{1}{q} S_q(z)\).</p>
+
+</div>
+
+<p>Note that \(S_q\) and \(\hat S_q\) are the same if we choose any other
+iterate of \(z\), and are thus unique for a particular periodic orbit.
+We now ask ourselves how this quantity changes if we perform a
+symplectic change of variables.</p>
+
+<p>Recall that if we have a dynamical system given by a diffeomorphism
+\(F \colon \mathcal{M} \to \mathcal{M}\), i.e. \(x_{n+1} = F(x_n)\), and
+we perform a change of variables \(x = G(y)\), in the new variables we
+have that \(y_{n+1} = G^{-1}(F(G(y_n)))\). Thus,
+\(y_{n+1} = \bar F (y_n)\), with \(\bar F = G^{-1} \circ F \circ G\).</p>
+
+<div class="proposition">
+  <p>Let \((\mathcal{M}, \mathrm{d} \alpha)\) be an exact symplectic
+manifold, \(F \colon \mathcal{M} \to \mathcal{M}\) be an exact
+symplectomorphism. We conjugate \(F\) by another exact symplectomorphism
+\(G \colon \mathcal{M} \to \mathcal{M}\). Define
+\(\bar F = G^{-1} \circ F \circ G\). Then</p>
+
+  <div class="adjustwidth">
+
+    <p>2em there exists a constant \(C \in \mathbb{R}\) s.t. for all
+\(q\)-periodic points \(z \in \mathcal{M}\) of \(F\) (so
+\(\bar z = G^{-1} (z)\) is \(q\)-periodic of \(\bar F\)) the
+corresponding averaged actions differ by \(C\),
+\(\hat {\bar {S_q}}(\bar z) = \hat S_q(z) + C\).</p>
+
+  </div>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Let \(\mathrm{pf}(F) = S\), \(\mathrm{pf}(G) = T\),
+\(\mathrm{pf}(\bar F) = \bar S\). By
+<a href="#prop:composition">[prop:composition]</a> we know that
+\(\bar S = S \circ G + T - T \circ \bar F + C\) for some
+\(C \in \mathbb{R}\). By definition,
+\({\bar{ S_q}}(\bar z) = \sum_{i=0}^{q-1} \left[ S(G(\bar F^i (z))) + T (\bar F^i(z)) - T (\bar F (\bar F^i (z))) + C\right] = qC + \sum_{i=0}^{q-1} \left[ S(G(\bar F^i (z)))  + T(\bar F^i(z)) - T(\bar F^{i+1}(z))\right]\).
+Since we are at a periodic orbit, the last two terms will cancel out
+inside of the sum. Thus,
+\({\bar {S_q}}(\bar z) = qC + \sum_{i=0}^{q-1} S(G(\bar F^i (z)))\).
+Note that \(\bar F^i = G^{-1} \circ F^i \circ G\). Thus,
+\({\bar {S_q}}(\bar z) = qC + \sum_{i=0}^{q-1} S(G(G^{-1}(F^i(G(\bar z))))) = qC + \sum_{i=0}^{q-1} S(F^i(z)) = qC + S_q (z)\). ◻</p>
+  </div>
+</details>
+
+<p>We conclude that the average action of a periodic orbit is invariant
+under exact symplectic coordinate transformations, up to an additive
+constant that is precisely the constant of
+<a href="#prop:composition">[prop:composition]</a>.</p>
+
+<h2 id="variational-principles-in-cotangent-bundles">Variational principles in cotangent bundles</h2>
+
+<p>We will now present some interesting variational principles in the case
+where our symplectic manifold is a cotangent bundle. Equivalent results
+hold on the easier case of \(\mathbb{R}^{2n}\).</p>
+
+<p>From now on, consider \(\mathcal{M}\) a manifold of dimension \(n\), and
+\(T^*\mathcal{M}\) its cotangent bundle. Recall that we can equip
+\(T^*\mathcal{M}\) with the canonical symplectic form
+\(w = -\mathrm{d} \alpha\), \(\alpha\) being the Liouville form, as
+explained in section <a href="#sec:canonical_cotangent">1.3</a>.</p>
+
+<div class="definition">
+  <p>Given a map \(F \colon \mathcal{P} \to T^*\mathcal{M}\) from a manifold
+\(\mathcal{P}\), and letting
+\(\pi \colon T^*\mathcal{M} \to \mathcal{M}\) the standard projection,
+we define as \(f = \pi \circ F \colon \mathcal{P} \to \mathcal{M}\) the
+<em>basic component</em> of \(F\).</p>
+
+</div>
+
+<p>We will now formulate the <em>exactness equation</em> in this setting.</p>
+
+<div class="proposition">
+  <p><span id="prop:exactness_cotangent" label="prop:exactness_cotangent"></span> Let
+\(F \colon T^* \mathcal{M} \to T^* \mathcal{M}\) be an exact
+symplectomorphism with
+\(\mathrm{pf}(F) = S \colon T^* \mathcal{M} \to \mathbb{R}\), and its
+principal component \(f = \pi \circ F\). Then, we have that
+\(\forall \rho_x \in T^*_x \mathcal{M}\),
+\(\mathrm{d}S_{\rho_x} = F_{\rho_x} \circ \mathrm{d}f_{\rho_x} - \rho_x \circ \mathrm{d} \pi_{\rho_x}\),
+viewed as a map
+\(\mathrm{d}S_{\rho_x} \colon T_{\rho_x}(T^*_x \mathcal{M}) \to \mathbb{R}\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>By defintion,
+\(\mathrm{d}S_{\rho_x} = (F^* \alpha)_{\rho_x} - \alpha_{\rho_x} = \alpha_{F(\rho_x)} \circ \mathrm{d}F_{\rho_x} - \alpha_{\rho_x}\).
+We now use that the Liouville form can be defined pointwise on
+\((x, \xi) \in T_x^* \mathcal{M}\) as
+\(\alpha_{(x, \xi)} = \xi \circ \mathrm{d}\pi_{(x, \xi)}\), as discussed
+section <a href="#sec:canonical_cotangent">1.3</a>, so
+\(\alpha_{F(\rho_x)} = F(\rho_x) \circ \mathrm{d}\pi_{F(\rho_x)}\). Note
+that we treat \(F(\rho_x) = F_{\rho_x}\) as a 1-form. Then
+\(\mathrm{d}S_{\rho_x} = F_{\rho_x} \circ \mathrm{d}\pi_{F_{\rho_x}} \circ \mathrm{d}F_{\rho_x} - \rho_x \circ \mathrm{d}\pi_{\rho_x}\).
+We now use the inverse chain rule on the first term to obtain
+\(\mathrm{d}S_{\rho_x} = F_{\rho_x} \circ \mathrm{d}(\pi \circ F)_{\rho_x} - \rho_x \circ \mathrm{d}\pi_{\rho_x}\). ◻</p>
+  </div>
+</details>
+
+<p>From now on, consider that
+\(F \colon T^*\mathcal{M} \to T^* \mathcal{M}\) is an exact
+symplectomorphism with primitive function \(\mathrm{pf}(F) = S\), and
+denote by \(f = \pi \circ F \colon T^* \mathcal{M} \to \mathcal{M}\) its
+principal component.</p>
+
+<div class="definition">
+  <p><span id="def:monotone_cotangent" label="def:monotone_cotangent"></span>
+We say that \(F\) is <em>monotone</em>
+\(\iff \forall x \in \mathcal{M}, \ f \colon T_x^* \mathcal{M} \to \mathcal{M}\)
+is a local diffeomorphism.
+\(\iff \forall \rho_x \in T^* \mathcal{M}, \ \mathrm{d}f_{\rho_x} \colon V_{\rho_x} (T^* \mathcal{M}) \to T_{\pi \circ F(\rho_x)}\mathcal{M}\)
+is an isomorphism. Here, \(V (T^* \mathcal{M})\) is the <em>vertical
+tangent bundle</em> of \(T^*\mathcal{M}\), defined as
+\(V T^* \mathcal{M} = \mathrm{ker}(\mathrm{d}\pi)\).</p>
+
+</div>
+
+<p>Geometrically, monotone functions are transversal to the leaves of the
+standard foliation of the cotangent bundle. It is easy to see that in
+local Darboux coordinates \((x, \xi)\), we have monotonicity provided
+that \(\frac{\partial f}{\partial \xi}\) has maximal rank.</p>
+
+<div class="definition">
+  <p>The <em>fiberwise transformed set</em> is defined as
+\(K = \{ \rho \in T^* \mathcal{M} \mid \pi (\rho) = f(\rho)\}\).</p>
+
+</div>
+
+<p>This is the equivalent to the <em>vertically transformed set</em> in
+\(\mathbb{R}^{2n}\), characterized by \(F_x(x,y) = x\). It has this name
+since any point of this set goes to the same fiber under \(F\).</p>
+
+<div class="proposition">
+  <p><span id="prop:rank_submani" label="prop:rank_submani"></span> If
+\(\mathrm{rank} \left( \mathbb{I}_n - \frac{\partial f}{\partial x} (x, \xi) \mid \frac{\partial f}{\partial \xi} (x, \xi) \right) = n \ \forall (x, \xi) \in K\),
+then \(K\) is a smooth submanifold of \(T^* \mathcal{M}\) of dimension
+\(n\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Note that we can define
+\(\delta \colon T^* \mathcal{M} \to \mathcal{M} \times \mathcal{M}\) as
+\(\delta = (\pi, f)\), and denote as
+\(\Delta = \{ (x,x) \mid x \in \mathcal{M}\} \subset \mathcal{M} \times \mathcal{M}\)
+the diagonal of \(\mathcal{M} \times \mathcal{M}\). Then,
+\(K = \delta^{-1}(\Delta)\). According to
+<a href="#thm:gen_regular_value">[thm:gen_regular_value]</a>, \(K\) will be a
+submanifold of \(\mathcal{M}\) provided that
+\(\delta \pitchfork \Delta\). That is, we have to satisfy the equation
+\(\mathrm{Im}(\mathrm{d}\delta_k) + T_{\delta(k)} \Delta = T_{\delta(k)} (\mathcal{M} \times \mathcal{M}) \ \forall k \in K\).
+We will show that this reduces to the proposition.</p>
+
+    <p>Take local coordinates \((x)\) in \(\mathcal{M}\), so the induced
+coordinates are \((x, \xi)\) on \(T^* \mathcal{M}\) around
+\((x_0, \xi_0)\). Suppose that \((x_0, \xi_0) \in K\). Then
+\(\delta(x_0, \xi_0) = (\pi(x_0, \xi_0), f(x_0, \xi_0)) = (x_0, x_0)\).
+Note that \(\mathrm{d} \delta_{(x, \xi)}\), which is an application
+\(\mathrm{d} \delta_{(x, \xi)} \colon T_{(x, \xi)}(T^* \mathcal{M}) \to T_{(x, x)}(\mathcal{M} \times \mathcal{M}) = T_{x} \mathcal{M} \times T_{x} \mathcal{M}\),
+can be expressed as \(\mathrm{d} \delta_{(x, \xi)}(\mu, \eta) = 
+    \begin{pmatrix}
+        \mathrm{d} \pi_{(x, \xi)} (\mu, \eta) \\ \mathrm{d} f_{(x, \xi)} (\mu, \eta)
+    \end{pmatrix} = \begin{pmatrix}
+    \mathbb{I}_n &amp; 0 \\ \frac{\partial f}{\partial x}(x, \xi)&amp; \frac{\partial f}{\partial \xi}(x, \xi)
+    \end{pmatrix} \begin{pmatrix}
+        \mu \\ \eta
+    \end{pmatrix}\). Also,
+\(T_{(x, x)}\Delta = \mathrm{span}(y,y) \subset 
+T_x \mathcal{M} \times T_x \mathcal{M}, \ y \in T_x \mathcal{M}\). The
+transversality equation is then equivalent to saying that every
+\((u, v) \in T_x \mathcal{M} \times T_x \mathcal{M}\) must be writable
+as \((u,v) = \mathrm{d} \delta_{(x, \xi)} (\mu, \eta) + (y, y)\) for
+some
+\((\mu, \eta) \in T_{(x, \xi)}(T^* \mathcal{M}), \, y \in T_x \mathcal{M}\).
+When developing, we obtain the system system \(\begin{cases}
+        u = \mu + y \\ v = \left[ \frac{\partial f}{\partial x} (x, \xi) \right] \mu + \left[ \frac{\partial f}{\partial y} (x,\xi) \right] \eta + y
+    \end{cases}\). Now, by eliminating \(y\), it is easy to see that
+such a system admits a solution for every \((u,v)\) provided that
+\(\left( \mathbb{I}_n - \frac{\partial f}{\partial x} (x, \xi)  \mid  \frac{\partial f}{\partial y} (x,y) \right)\)
+is surjective (Rouché-Capelli theorem). Note that by
+<a href="#thm:gen_regular_value">[thm:gen_regular_value]</a>,
+\(\mathrm{codim}_{T^*\mathcal{M}} (K) = \mathrm{codim}_{\mathcal{M} \times \mathcal{M}}(\Delta) = n\),
+so \(\mathrm{dim}(K) = n\). ◻</p>
+  </div>
+</details>
+
+<p>An important observation is that if \(F\) is monotone, then
+\(\frac{\partial f}{\partial \xi}\) has full rank so the previous
+condition is automatically satisfied, and \(K\) is indeed a submanifold.</p>
+
+<p>As per the previous proof, it is useful to establish \(\delta\) and
+\(\Delta\) as proper definitions. Then, the previous proposition simply
+states that \(K\) is a smooth submanifold provided that
+\(\delta \pitchfork \Delta\).</p>
+
+<div class="definition">
+  <p>\(\delta \colon T^* \mathcal{M} \to \mathcal{M} \times \mathcal{M}\) the
+map such that \(\delta = (\pi, f)\), and the diagonal of
+\(\mathcal{M} \times \mathcal{M}\) as
+\(\Delta = \{ (x,x) \mid x \in \mathcal{M}\} \subset \mathcal{M} \times \mathcal{M}\)</p>
+
+</div>
+<div class="definition">
+  <p>We define the <em>action</em> as the restriction of \(S\) to the fiberwise
+transformed set, \(\mathbf{s} = S |_K\).</p>
+
+</div>
+
+<p>We can now finally relate fixed points of \(F\) to critial points of the
+action.</p>
+
+<div class="theorem">
+  <p><span id="thm:fixed_points" label="thm:fixed_points"></span> Let
+\(F \colon T^* \mathcal{M} \to T^* \mathcal{M}\) be an exact
+symplectomorphism with \(\mathrm{pf}(F) = S\), \(f = \pi \circ F\) its
+principal component. Let \(K \subset T^* \mathcal{M}\) be its fiberwise
+transformed set, and suppose that \(\delta \pitchfork \Delta\) (so \(K\)
+is a smooth submanifold of \(T^* \mathcal{M}\)). Then:</p>
+
+  <ol>
+    <li>
+      <p>The fixed points of \(F\) are critical points of the action
+\(\mathbf{s} = S |_K\).</p>
+    </li>
+    <li>
+      <p>If \(F\) is monotone, the critical points of \(\mathbf{s}\) are
+fixed points of \(F\).</p>
+    </li>
+  </ol>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>We will use corollay <a href="#cor:lagrange">[cor:lagrange]</a>. Note that
+\(K = \delta ^{-1}(\Delta)\).</p>
+
+    <p>Take \(\rho_x \in K\), and note that
+\(\delta(\rho_x) = (\pi(\rho_x), f(\rho_x)) = (\pi(\rho_x), \pi(\rho_x)) = (x, x) \in \mathcal{M} \times \mathcal{M}\).
+Note also that
+\(T_{(x,x)}(\mathcal{M} \times \mathcal{M}) = T_x \mathcal{M} \times T_x \mathcal{M}\),
+and
+\(T_{(x,x)} \Delta = \mathrm{span}(u, u) \subset T_x \mathcal{M} \times T_x \mathcal{M}, \ u \in T_x \mathcal{M}\).
+Thus, a complement of \(T_{(x,x)}\Delta\) in
+\(T_{(x,x)}(\mathcal{M} \times \mathcal{M})\) is, for example,
+\(E_{(x,x)}=\{0_x\} \times T_x \mathcal{M}\). This means that
+\(T_{\delta(\rho_x)}(\mathcal{M} \times \mathcal{M}) =  T_{\delta(\rho_x)} \Delta \oplus (\{ 0_x \} \times T_x \mathcal{M}) \quad \text{and in fact we can write} \quad
+        \begin{pmatrix}
+            u \\ v
+        \end{pmatrix} = 
+        \begin{pmatrix}
+            u \\ u
+        \end{pmatrix} +
+        \begin{pmatrix}
+            0 \\ v - u
+        \end{pmatrix}.\) This leads us to the projection
+\(\mathfrak{p} \colon T_{\delta(\rho_x)}(\mathcal{M} \times \mathcal{M}) = T_x \mathcal{M} \times T_x \mathcal{M} \to E_{\delta(\rho_x)} \cong T_x \mathcal{M}\),
+\(\mathfrak{p}(u, v)= v -u\). Then, we have all the pieces of corollary
+<a href="#cor:lagrange">[cor:lagrange]</a>, so we know that \(\rho_x\) is a
+critical point of \(\mathbf{s} = S|_K \iff\)
+\(\exists \lambda \in E_{\delta(\rho_x)}^* \cong T_x^* \mathcal{M}\)
+s.t.
+\(\mathrm{d}S_{\rho_x} = \lambda \circ \mathfrak{p} \circ \mathrm{d}g_{\rho_x}\).</p>
+
+    <p>The left hand side, using
+<a href="#prop:exactness_cotangent">[prop:exactness_cotangent]</a>, directly
+gives
+\(\mathrm{d} S_{\rho_x} = F_{\rho_x} \circ \mathrm{d}f_{\rho_x} - \rho_x \circ \mathrm{d}\pi_{\rho_x}\).
+The right hand side, using the definition of \(\mathfrak{p}\), gives
+\(\lambda \circ \mathfrak{p} \circ \mathrm{d}g_{\rho_x} = \lambda \circ \mathfrak{p} \circ 
+    (\mathrm{d}\pi_{\rho_x}, \mathrm{d} f_{\rho_x}) = \lambda \circ (\mathrm{d}f_{\rho_x} - \mathrm{d}\pi_{\rho_x})\).
+Thus, the Lagrange equation reduces to
+\(\label{eq:lagrange_fixed_points}
+        F_{\rho_x} \circ \mathrm{d}f_{\rho_x} - \rho_x \circ \mathrm{d}\pi_{\rho_x} = \lambda \circ (\mathrm{d}f_{\rho_x} - \mathrm{d}\pi_{\rho_x}).\)</p>
+
+    <ol>
+      <li>
+        <p>If \(\rho_x\) is a fixed point of \(F\), \(F(\rho_x) = \rho_x\), and
+it suffices to choose \(\lambda = \rho_x = F(\rho_x)\) to satisfy
+<a href="#eq:lagrange_fixed_points">[eq:lagrange_fixed_points]</a>.</p>
+      </li>
+      <li>
+        <p>Suppose that \(F\) is monotone, and take a vertical vector
+\(\xi_{\rho_x} \in V_{\rho_x} (T^* \mathcal{M})\), so
+\(\mathrm{d}\pi_{\rho_x} (\xi_{\rho_x}) = 0\). Applying
+<a href="#eq:lagrange_fixed_points">[eq:lagrange_fixed_points]</a> to
+\(\xi_{\rho_x}\), the equation reduces to
+\(F_{\rho_x} \circ \mathrm{d}f_{\rho_x} (\xi_{\rho_x}) = \lambda \circ \mathrm{d}f_{\rho_x} (\xi_{\rho_x})\).
+According to the definition of monotonicity
+<a href="#def:monotone_cotangent">[def:monotone_cotangent]</a>,
+\(\mathrm{d}f_{\rho_x}\) is an isomorphism between
+\(V_{\rho_x} (T^* \mathcal{M})\) and \(T_{f(\rho_x)} \mathcal{M}\),
+so we obtain \(\lambda = F_{\rho_x}\). Then,
+<a href="#eq:lagrange_fixed_points">[eq:lagrange_fixed_points]</a> reads
+\(\rho_x \circ \mathrm{d}\pi_{\rho_x} = \lambda \circ \mathrm{d}\pi_{\rho_x}\).
+Finally, we note that \(\pi\) is a submersion, so \(\mathrm{d} \pi\)
+is surjective and indeed
+\(\rho_x \circ \mathrm{d}\pi_{\rho_x} = \lambda \circ \mathrm{d}\pi_{\rho_x} \implies \rho_x = \lambda\).
+Thus, \(\rho_x = F_{\rho_x}\).</p>
+      </li>
+    </ol>
+
+    <p> ◻</p>
+  </div>
+</details>
+
+<h3 id="sec:PO_cotangent">Periodic orbits</h3>
+
+<p>Periodic orbits of period \(q\) are in correspondence with fixed points
+of \(F^q\). We could apply the previous proposion, but determining the
+monotonicity of \(F^q\) and the transversality condition on \(K\) would
+not be trivial. Thus it is better to work on the symplectic product
+\((T^* \mathcal{M})^q\).</p>
+
+<p>In particular, as explained in section <a href="#sec:sym_prod">1.5</a>, we consider
+\(F_q \colon (T^* \mathcal{M})^q \to (T^* \mathcal{M})^q \quad , \quad F_q(\rho_0, \ldots, \rho_{q-1}) = (F(\rho_{q-1}), F(\rho_0), \ldots, F(\rho_{q-2})).\)
+As explained in said section, fixed points of \(F\) are in
+correspondance with fixed points of \(F_q\), and this allows for a
+parallel shooting approach to our search of periodic orbits. We will
+follow the same methodology as before, more straightforwardly.</p>
+
+<div class="definition">
+  <p>The set of <em>\(F\)-loops</em> is defined as<br>
+\(K_q = \{ (\rho_0, \ldots, \rho_{q-1}) \in (T^* \mathcal{M})^q \mid \pi(\rho_0) = f(\rho_{q-1}),\  \pi(\rho_{i+1}) = f(\rho_i), \ i = [0, q-2]\}\).</p>
+
+</div>
+<div class="definition">
+  <p>\(\delta \colon (T^* \mathcal{M})^q \to (\mathcal{M} \times \mathcal{M})^q\)
+the function defined as</p>
+
+  <p>\(\delta(\rho_0, \ldots, \rho_{q-1}) = (\pi(\rho_0), f(\rho_0), \ldots, \pi(\rho_{q-1}), f(\rho_{q-1}))\).
+The <em>cyclic diagonal</em> \(\Delta\) on
+\((\mathcal{M} \times \mathcal{M})^q\) is the set
+\(\Delta = \{ (x_0, x_1, x_1, \ldots, x_{q-1}, x_{q-1}, x_0) \mid x_i \in \mathcal{M} \}\).
+Note that \(K = \delta^{-1} (\Delta)\).</p>
+
+</div>
+<div class="proposition">
+  <p>The transversality condition in this setting (that is for
+\(\delta \pitchfork \Delta\) and thus \(K\) being a smooth submanifold
+of dimension \(nq\) of \((T^* \mathcal{M})^q\)) is that
+\(\forall \rho = (\rho_0, \ldots, \rho_{q-1}) \in K\) with
+\(\rho_i = (x_i, \xi_i)\) and
+\(A_i = \frac{\partial f}{\partial x}(x_i, \xi_i), \ B_i = \frac{\partial f}{\partial \xi}(x_i, \xi_i)\)
+we have \(\mathrm{rank} 
+        \left(
+        \begin{matrix}
+            A_0 &amp; -\mathbb{I}_n &amp; 0 &amp; \cdots &amp; 0 \\
+            0 &amp; A_1 &amp; -\mathbb{I}_n &amp; \cdots &amp; 0 \\
+            \vdots &amp; \vdots &amp; \vdots &amp;  &amp;  \vdots &amp; \\
+            -\mathbb{I}_n &amp; 0 &amp; 0 &amp; \cdots &amp; A_{q-1} \\
+        \end{matrix} \right| 
+        \left. 
+        \begin{matrix}
+            B_0 &amp; 0 &amp; \cdots &amp; 0 \\    
+            0 &amp; B_1 &amp; \cdots &amp; 0 \\    
+            \vdots &amp; \vdots &amp;  &amp; \vdots \\
+            0 &amp; 0 &amp; \cdots &amp; B_{q-1}
+            \end{matrix}
+            \right) = nq.\)</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>The proof is in essence exactly the same as that of
+<a href="#prop:rank_submani">[prop:rank_submani]</a>. That is, we look at the
+transversality equation
+\(\mathrm{Im}(\mathrm{d}\delta_\rho) + T_{\delta(\rho)} \Delta = T_{\delta(\rho)}((\mathcal{M} \times \mathcal{M})^q)\).
+In local coordinates and proceeding similarly, we quickly obtain that
+such an equation is satisfied if we can solve the system
+\(\begin{pmatrix}
+            \mu_0 \\ A_0 \mu_0 + B_0 \eta_0 \\ \mu_1 \\ \vdots \\ \mu_{q-1} \\ A_{q-1} \mu_{q-1} + B_{q-1} \eta_{q-1}
+        \end{pmatrix}
+        + \begin{pmatrix}
+            y_0 \\ y_1 \\ y_1 \\ \vdots \\ y_{q-1} \\ y_0
+        \end{pmatrix}
+        = 
+        \begin{pmatrix}
+            u_0 \\ v_0 \\ u_1 \\ \vdots \\ u_{q-1} \\ v_{q-1}
+        \end{pmatrix},\) for some
+\((\mu_0, \eta_0, \ldots, \mu_{q-1}, \eta_{q-1}) \in (T_{(x_i, \xi_i)}T^* \mathcal{M})^q\)
+and
+\((y_0, y_1, y_1, \ldots, y_{q-1}, y_0) \in (T_{x_i}\mathcal{M} \times T_{x_i} \mathcal{M})^q\)
+given any
+\((u_0, v_0, \ldots, u_{q-1}, v_{q-1}) \in T_{x_0} \mathcal{M} \times T_{x_0} \mathcal{M} \times \cdots \times \in T_{x_{q-1}} \mathcal{M} \times T_{x_{q-1}} \mathcal{M}\).
+By eliminating the \(y_i\)’s, we obtain an under-determined system. By
+the Rouché-Capelli thorem, such a system admits a solution for all right
+hand side vectors iff the rank of the corresponding matrix is maximal.
+This is precisely the condition of the proposition. ◻</p>
+  </div>
+</details>
+
+<p>We remark that if \(F\) is monotone, then the matrices \(B_i\) always
+have maximal rank and thus we always have that
+\(\delta \pitchfork \Delta\).</p>
+
+<div class="definition">
+  <p>The <em>action</em> \(\mathbf{s}_q\) for \(F_q\) in this setting is simply
+\(\mathrm{pf}(F_q)\) restricted to \(K_q\). That is,
+\(\mathbf{s}_q (\rho_0, \ldots, \rho_{q-1}) = \sum _{i=0}^{q-1} S (\rho_i)\),
+with domain on \(K_q\).</p>
+
+</div>
+
+<p>Now, the results of the previous section hold trivially on \(F_q\) and
+\(\mathbf{s}_q\). In particular, we can find \(q\)-periodic orbits of
+\(F\) by looking for critical points of \(\mathbf{s}_q\).</p>
+
+<h3 id="ssec:connecting_orbits">Connecting orbits</h3>
+
+<p>We can also give a variational principle for the construction of orbits.
+In this case, we consider
+\(\mathbf{x}_k, \mathbf{x}_l \in \mathcal{M}\), with \(k+1&lt;l\), and ask
+for the connecting orbits of \(\mathbf{x}_k\) and \(\mathbf{x}_l\). We
+proceed in an analogous manner as before.</p>
+
+<div class="definition">
+  <p>We define the <em>set of F-chains connecting \(\mathbf{x}_k\) and
+\(\mathbf{x}_l\) in \(\mathcal{M}\)</em> as the set of finite sequences
+\(K_{k,l} \subset (T^* \mathcal{M})^{l-k}\), called <em>connecting orbits</em>,
+satisfying<br>
+\(K_{k,l} = \{ (\rho_k, \rho_{k+1}, \ldots, \rho_{l-1}) \mid \pi(\rho_k) = \mathbf{x}_k, \ f(\rho_{l-1} ) = \mathbf{x}_l, \ f(\rho_i) = \pi(\rho_{i+1}) \  \forall i = [k, l-2]\}\).</p>
+
+</div>
+<div class="definition">
+  <p>We define the map
+\(\delta_{k,l} \colon (T^* \mathcal{M})^{l-k} \to (\mathcal{M} \times \mathcal{M})^{l-k}\)
+as
+\(\delta_{k,l} (\rho_k, \rho_{k+1}, \ldots, \rho_{l-1}) = (\pi(\rho_k), f(\rho_k), \pi(\rho_{k+1}), f(\rho_{k+1}), \ldots, \pi(\rho_{l-1}), f(\rho_{l-1}))\),
+and the set
+\(\Delta_{k,l} \subset (\mathcal{M} \times \mathcal{M})^{l-k}\) as
+\(\Delta_{k,l} = \{ (\mathbf{x}_k, x_{k+1}, x_{k+1}, x_{k+2}, \ldots, x_{l-1}, x_{l-1}, \mathbf{x}_l) \mid x_i \in \mathcal{M} \}\).</p>
+
+</div>
+<div class="proposition">
+  <p>The transversality condition to ensure
+\(\delta_{k,l} \pitchfork \Delta_{k,l}\) (and thus that
+\(K = \delta_{k,l}^{-1}(\Delta_{k,l})\) is a smooth submanifold of
+\((T^* \mathcal{M})^{l-k}\) of dimension \(n(l-k-1)\)) is that
+\(\forall \rho = (\rho_k, \ldots, \rho_l) \in K_{k,l}\) with
+\(\rho_i = (x_i, \xi_i)\) and
+\(A_i = \frac{\partial f}{\partial x}(x_i, \xi_i), \ B_i = \frac{\partial f}{\partial \xi}(x_i, \xi_i)\)
+we have \(\mathrm{rank}
+        \begin{pmatrix}
+            \mathbb{I}_n &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 \\
+            A_k &amp; B_k &amp; -\mathbb{I}_n &amp; 0 &amp; \cdots &amp; 0 &amp; 0\\
+            0 &amp; 0 &amp; A_{k+1} &amp; B_{k+1} &amp;  \cdots &amp; 0 &amp; 0\\
+            \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; &amp; \vdots &amp; \vdots \\
+            0 &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; - \mathbb{I}_n &amp; 0\\
+            0 &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; A_{l-1} &amp; B_{l-1}
+        \end{pmatrix} = n (l-k+1).\) Thus, if \(F\) is monotone, then
+\(\delta_{k,l} \pitchfork \Delta_{k,l}\).</p>
+
+</div>
+<div class="definition">
+  <p>The <em>orbital action</em> \(\mathbf{s}_{k,l}\) on the set of F-chains is
+\(\mathbf{s}_{k,l}(\rho) = \sum_{i=k}^{l-1}S(\rho_i)\).</p>
+
+</div>
+<div class="theorem">
+  <p>Let \(\mathcal{M}\) a manifold, and
+\(F \colon T^* \mathcal{M} \to T^* \mathcal{M}\) an exact
+symplectomoprhism with \(\mathrm{pf}(F) = S\) and \(f = \pi \circ F\)
+its principal component. Let
+\(\mathbf{x}_k, \mathbf{x}_l \in \mathcal{M}\), \(k+1&lt; l\), and
+\(K_{k,l} = \delta^{-1}_{k,l}(\Delta_{k,l})\) the corresponding set of
+F-chains connecting \(\mathbf{x}_k\) with \(\mathbf{x}_l\). Suppose
+\(K_{k,l} \neq \emptyset\) and \(\delta_{k,l} \pitchfork \Delta_{k,l}\).
+Let \(\mathbf{S}_{k,l} \colon (T^* \mathcal{M})^{l-k} \to \mathbb{R}\)
+be defined as \(\mathbf{S}_{k,l}(\rho) = \sum_{i=k}^{l-1}S(\rho_i)\).</p>
+
+  <ul>
+    <li>
+      <p>The connecting orbits between \(\mathbf{x}_k\) and \(\mathbf{x}_l\)
+are critical chains of
+\(\mathbf{s}_{k,l} = \mathbf{S}_{k,l}|_{K_{k,l}}\).</p>
+    </li>
+    <li>
+      <p>If \(F\) is monotone, the critical chains of \(\mathbf{s}_{k,l}\) are
+connecting orbits.</p>
+    </li>
+  </ul>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>The proof is very similar to <a href="#thm:fixed_points">[thm:fixed_points]</a>,
+in particular, making use of the generalized Lagrange multiplier method
+<a href="#cor:lagrange">[cor:lagrange]</a>.</p>
+
+    <p>Take \(\rho = (\rho_k, \ldots, \rho_{l-1}) \in K_{k,l}\), so
+\(\delta_{k,l}(\rho) = (\mathbf{x}_k, x_{k+1}, x_{k+1}, x_{k+2}, \ldots, x_{l-1}, x_{l-1}, \mathbf{x}_l) \in (\mathcal{M} \times \mathcal{M})^{l-k}\).
+Then, note that
+\(T_{\delta_{k,l}(\rho)}((\mathcal{M} \times \mathcal{M})^{l-k}) = T_{\mathbf{x}_k} \mathcal{M} \times \left[ \prod_{i=k+1}^{l-1} T_{x_i} \mathcal{M} \times T_{x_i} \mathcal{M} \right] \times T_{\mathbf{x}_{l}} \mathcal{M}\),
+and
+\(T_{\delta_{k,l}(\rho)} \Delta_{k,l} = \mathrm{span}(0, u_{k+1}, u_{k+1}, \cdots, u_{l-1}, u_{l-1}, 0) \subset T_{\delta_{k,l}(\rho)}((\mathcal{M} \times \mathcal{M})^{l-k}) , \ u_i \in T_{x_i} \mathcal{M}\).
+Thus, we can decompose
+\(E_{\delta_{k,l}(\rho)} =T_{\mathbf{x}_k} \mathcal{M} \times \{0_{x_{k+1}}\}  \times T_{x_{k+1}} \mathcal{M} \times \cdots \times \{0_{x_{l-1}}\}  \times T_{x_{l-1}} \mathcal{M} \times T_{\mathbf{x}_l} \mathcal{M}\),
+with \(E_{\delta_{k,l}(\rho)}\) as given by
+\(E_{\delta_{k,l}(\rho)} =T_{\mathbf{x}_k} \mathcal{M} \times \{0_{x_{k+1}}\}  \times T_{x_{k+1}} \mathcal{M} \times \cdots \times \{0_{x_{l-1}}\}  \times T_{x_{l-1}} \mathcal{M} \times T_{\mathbf{x}_l} \mathcal{M}\).
+Essentially, we write this as \(\begin{pmatrix}
+            v_k \\ u_{k+1} \\ v_{k+1} \\ \vdots \\ u_{l-1} \\ v_{l-1} \\ u_l
+        \end{pmatrix} = 
+        \begin{pmatrix}
+            0 \\ u_{k+1} \\ u_{k+1} \\ \vdots \\ u_{l-1} \\ u_{l-1} \\ 0
+        \end{pmatrix} +
+        \begin{pmatrix}
+            v_k \\ 0 \\ v_{k+1} - u_{k+1} \\ \vdots \\ 0 \\ v_{l-1} - u_{l-1} \\ u_l
+        \end{pmatrix}.\) Since
+\(E_{\delta_{k,l}(\rho)} \cong \prod_{i=k}^l T_{x_i} \mathcal{M}\), we
+define the projection
+\(\mathfrak{p} \colon T_{\delta_{k,l}(\rho)}(\mathcal{M} \times \mathcal{M})  \to E_{\delta_{k,l}(\rho)}\)
+as \(\mathfrak{p}
+        \begin{pmatrix}
+            v_k \\ u_{k+1} \\ v_{k+1} \\ \ldots \\ u_{l-1} \\ v_{l-1} \\ u_l 
+        \end{pmatrix}
+        = 
+        \begin{pmatrix}
+            v_k \\ v_{k+1} - u_{k+1} \\ \ldots \\ v_{l-1} - u_{l-1} \\ u_l 
+        \end{pmatrix}\) Then, we have all the pieces of corollary
+<a href="#cor:lagrange">[cor:lagrange]</a>, so we know that \(\rho\) is a
+critical point of \(\mathbf{s} = S|_K \iff\)
+\(\exists \lambda \in E_{\delta_{k,l}(\rho)}^* \cong \prod_{i=k}^l T_{x_i} \mathcal{M}\)
+s.t.
+\(\mathrm{d}S_{\rho} = \lambda \circ \mathfrak{p} \circ \mathrm{d} \delta_{\rho}\).
+That is, if there exist \(l-k+1\) forms
+\(\lambda_i \in T^*_{x{_i}}\mathcal{M}, \ i = [k, l]\) s.t.
+\(\forall \xi = (\xi_k, \xi_{k+1}, \ldots, \xi_{l-1}) \in \prod_{i=k}^{l-1} T_{\rho_i}T^* \mathcal{M}\)
+we satisfy (using
+<a href="#prop:exactness_cotangent">[prop:exactness_cotangent]</a>)
+\(\sum_{i=k}^{l-1}(F_{\rho_i} \circ \mathrm{d}f_{\rho_i} - \rho_i \circ \mathrm{d} \pi_{\rho_i})(\xi_i) =  \lambda_k \circ \mathrm{d} \pi_{\rho_k}(\xi_k) + \sum_{i=k+1}^{l-1} \lambda_i \circ (\mathrm{d} \pi_{\rho_i} (\xi_i) - \mathrm{d} f_{i-1}(\xi_{i-1})) + \lambda_{l} \circ \mathrm{d} f_{l-1}(\xi_{l-1}).\)</p>
+
+    <ol>
+      <li>
+        <p>If \(\rho\) is the segment of an orbit connecting
+\(\mathbf{x}_k, \mathbf{x}_l\), we have
+\(F(\rho_i) = \rho_{i+1} \ \forall i\). Then, the left hand side
+reduces to
+\(- \rho_k \circ \mathrm{d} \pi_{\rho_{k}}(\xi_k) + \sum_{i=k+1}^{l-1} \rho_i \circ ( \mathrm{d} f_{\rho_{i-1}}(\xi_{i-1}) - \mathrm{d}\pi_{i}(\xi_{i})) + F_{\rho_{l-1}} \circ \mathrm{d} f_{\rho_{l-1}}(\xi_{l-1})\).
+It suffices to choose
+\(\lambda_l = F(\rho_{l-1}), \ \lambda_i = -\rho_i \ \forall i = [k, l-1]\).</p>
+      </li>
+      <li>
+        <p>Suppose that \(F\) is monotone. If we apply the formula to a vector
+\(\xi = (0, \ldots, \xi_i, \ldots, 0)\) with
+\(\xi_i \in V_{\rho_i} T^* \mathcal{M}\), we obtain
+\(F_{\rho_i} \circ \mathrm{d}f_{\rho_i} (\xi_i) = - \lambda_{i+1} \circ \mathrm{d}f_{\rho_i} (\xi_i) \ i = [k, l-2], \\).
+Since is this is true
+\(\forall \xi_i \in V_{\rho_i} T^* \mathcal{M}\) and \(F\) is
+monotone, we have
+\(\lambda_{i+1} = -F(\rho_i) \ i=[k, l-2], \ \lambda_{l} = F(\rho_{l-1})\).
+Then the original equation reduces to
+\(\sum_{i=k}^{l-1} \rho_i \circ \mathrm{d}\pi_{\rho_i}(\xi_i) = \sum_{i=k}^{l-1} \lambda_i \circ \mathrm{d}\pi_{\rho_i}(\xi_i) \ \forall \xi \in \prod_{i=k}^{l-1} T_{\rho_i} T^* \mathcal{M}\),
+so we reach
+\(\lambda_i = - \rho_i , \ i = [k, l-1], \ \lambda_l = F(\rho_{l-1})\).
+Thus, overall we have \(\rho_{i+1} = F(\rho_i), \ i = [k, l-2]\).</p>
+      </li>
+    </ol>
+
+    <p> ◻</p>
+  </div>
+</details>
+
+<hr>
+
+<h1 id="convex-billiards">Convex billiards</h1>
+
+<h2 id="the-billiard-map">The billiard map</h2>
+
+<p>We will now define the billiard map from a symplectic point of view in
+\(\mathbb{R}^n\).</p>
+
+<p>Consider a bounded and strictly convex domain
+\(\mathcal{M} \subset \mathbb{R}^n\) with a smooth boundary
+\(\partial \mathcal{M}\). Consider the standard Euclidean metric, so we
+can identify the natural symplectic structure of \(T^* \mathcal{M}\)
+with \(T \mathcal{M}\) (via the Riesz representation theorem).</p>
+
+<p>Consider the subset \(W \subset T\mathcal{M}\) defined as
+\(W = \{ (q,p) \in T \mathcal{M} \mid \|p\| = 1, \ q \in \partial \mathcal{M}\}\).
+That is, \(W\) corresponds with all unit vectors with footpoints on
+\(\partial \mathcal{M}\). It is easy to see that \(W\) is a smooth
+submanifold of \(T \mathcal{M}\). Now, consider the projection
+\(\mathfrak{p} \colon W \to T(\partial \mathcal{M})\) that maps a
+tangent vector in the ambient space onto the tangent hyperplane to
+\(\partial \mathcal{M}\). Its image \(\mathfrak{p}(W) = V\) is precisely
+the unit disc subbundle of \(T(\partial \mathcal{M})\).</p>
+
+<div class="definition">
+  <p>We define \(V\) as the unit disk subbundle of
+\(T (\partial \mathcal{M})\). In other words,
+\(V = \{ (q,p) \in T (\partial \mathcal{M}) \mid \|p\| \leq 1\}\).</p>
+
+</div>
+
+<p>Furthermore, we note that we can identify \(V\) with the subset of \(W\)
+consisting of inward unit tangent vectors to \(\mathcal{M}\) with
+footpoints in \(\partial \mathcal{M}\) (lift \(V\) to \(W\)). This
+allows for the definition of the billiard map, but first, we will note
+an important fact about \(V\).</p>
+
+<div class="proposition">
+  <p>\(V\) is an exact symplectic manifold with a boundary. In particular,
+\(\mathrm{Int}(V)\) is an exact symplectic manifold.</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Thanks to the identification
+\(T (\partial \mathcal{M}) \cong T^*(\partial \mathcal{M})\), we can
+view \(V \subset T^*(\partial \mathcal{M})\). Note that
+\(\mathrm{Int}(V)\) is an open smooth submanifold of
+\(T^*(\partial \mathcal{M})\) of the same dimension,
+\(\mathrm{dim}(V) = \mathrm{dim}(T^* (\partial \mathcal{M})) = 2(n-1)\).
+Now, consider the canonical symplectic form on
+\(T^* (\partial \mathcal{M})\). That is, in local Darboux coordinates
+\((x,y)\),
+\(w = \mathrm{d}x \wedge \mathrm{d}y = \mathrm{d} \alpha, \ \alpha = -y \mathrm{d}x\).
+Then, the restriction of \(w\) to \(\mathrm{Int}(V)\),
+\(w|_{\mathrm{Int}(V)}\) is a closed non-degenerate 2-form, and
+\(w|_{\mathrm{Int}(V)} = \mathrm{d}(\alpha|_{\mathrm{Int}(V)})\). Thus,
+\((\mathrm{Int}(V), w|_{\mathrm{Int}(V)})\) is an exact symplectic
+manifold. ◻</p>
+  </div>
+</details>
+
+<p>The boundary of \(V\) does not suppose a problem. We say that \((V, w)\)
+is a <em>Liouville domain</em>. However, we will not dive into details about
+this in this work.</p>
+
+<div class="definition">
+  <p>The billiard transformation \(T \colon V \to V\), takes \(v \in V\), and
+first identifies it with the inward unit vector in the ambient space at
+the same point of \(\partial \mathcal{M}\) whose projection to
+\(T(\partial \mathcal{M})\) is \(v\) (lift \(v\) to \(W\)). Next, this
+direction is followed until it hits \(\partial \mathcal{M}\) at some
+other point. Finally, the resulting position and vector is projected
+back onto \(V\).</p>
+
+</div>
+
+<p>It is important to note that since \(\mathcal{M}\) is convex, this map
+is well defined. Regarding the boundaries, if after lifting \(v\) to
+\(W\) the vector is tangential to \(\partial \mathcal{M}\), then the map
+is simply the identity.</p>
+
+<h2 id="2-dimensional-case">2-dimensional case</h2>
+
+<p>Consider the curve in the plane \(\Gamma\) corresponding with the
+boundary of the billiard table \(\partial \mathcal{M}\). This curve can
+be parametrized by its arc-length \(s\), and since it is closed, \(s\)
+can be regarded as an angle. We then have
+\(\Gamma \colon \mathbb{R} / \mathbb{Z} \to \mathbb{R}^2\), such that
+\(\Gamma ([0,1)) = \partial \mathcal{M}\). We assume that
+\(\Gamma \in \mathcal{C}^r\) for the required regularity.</p>
+
+<p>We define as \(\theta\) the angle of incidence of an interior ray with
+\(\Gamma\) at a particular point \(s\), so \(\theta \in (0, \pi)\).</p>
+
+<p>We take \((s, \theta)\) as coordinates on the exact symplectic manifold
+\(V\). Thus, the billiard transformation
+\(T \colon (s, \theta) \to (s', \theta')\) takes an incident ray on
+\(\Gamma(s) \in \partial \mathcal{M}\) with incident angle \(\theta\),
+and returns the corresponding value of the parameter \(s'\) as well as
+the angle \(\theta'\) corresponding to the intersection of the
+reflection of said ray with \(\partial \mathcal{M}\).</p>
+
+<div class="definition">
+  <p>We define as \(H \colon V \to \mathbb{R}\) as the length of the ray
+reflected at \(\Gamma(s)\) with incidence angle \(\theta\). That is,
+\(H(s, \theta) = \|\Gamma(s'(s, \theta)) - \Gamma(s)\|\).</p>
+
+</div>
+<div class="proposition">
+  <p>\(H\) is a generating function of the billiard transformation
+\(T \colon V \to V\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Note that we can view \(H = H(s, s')\), so we have
+\(\mathrm{d} H = \frac{\partial H}{\partial s'} \mathrm{d} s' - \frac{\partial H}{\partial s} \mathrm{d}s\).
+It is easy to see that \(\frac{\partial H}{\partial s} = \cos \theta\)
+and \(\frac{\partial H}{\partial s'} = \cos \theta '\), so
+\(\mathrm{d}H = \cos \theta' \mathrm{d}s' - \cos \theta \mathrm{d}s\).
+Hence, we have that \(\mathrm{d} H = T^* \alpha -\alpha\) with \(T\)
+being the billiard transformation and
+\(\alpha = \cos{ \theta} \mathrm{d}s\). This is the definition of
+generating function. ◻</p>
+  </div>
+</details>
+
+<p>Note that from the previous definition of \(\alpha\), we have that the
+symplectic form on \(V\) is
+\(w = - \mathrm{d} \alpha = \sin \theta \mathrm{d} \theta \wedge \mathrm{d}s\).
+Then, \(T\) is an exact symplectomorphism on the symplectic manifold
+\((V, w)\), since \(T^* w = w\) as a consequence of the previous
+proposition (\(\mathrm{d}(T^* \alpha - \alpha) = \mathrm{d}^2 H = 0\)).</p>
+
+<p>Another interesting remark is that the form
+\(w = \sin \theta \mathrm{d} \theta \wedge \mathrm{d}s\) can be
+rewritten as \(w = \mathrm{d}q \wedge \mathrm{d}s\) with
+\(q = \cos \theta\). Note that \(q \in (-1, 1)\) is precisely the
+canonical parameter determining the length and direction of a unit
+tangent vector to \(\partial \mathcal{M}\), and corresponds to
+projecting the ray’s direction vector onto the tangent space.</p>
+
+<div class="corollary">
+  <p>The billiard transformation \(T\) preserves the area form
+\(w = \sin \theta \mathrm{d} \theta \wedge \mathrm{d}s\) in
+\((s, \theta)\) coordinates, or the form
+\(w = \mathrm{d} q \wedge \mathrm{d}s\) in \((s, q)\) coordinates.</p>
+
+</div>
+
+<p>Finally, we note that \(T\) is a monotone map in terms of definition
+<a href="#def:monotone_cotangent">[def:monotone_cotangent]</a>.</p>
+
+<div class="proposition">
+  <p>The billiard transformation \(T\) is a monotone map, that is,
+\(\frac{\partial s'}{\partial \theta} \neq 0\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Consider a fixed point \(s_0\), and the tangent vector
+\(\dot \Gamma (s_0) = (\dot \Gamma_x (s_0), \dot \Gamma_y (s_0))\).
+Consider the ray starting at \(\Gamma(s_0)\) with angle \(\theta\), with
+direction
+\(v = (\dot \Gamma_x (s_0) \cos \theta - \dot \Gamma_y (s_0) \sin \theta, \dot \Gamma_x (s_0) \sin \theta + \dot \Gamma_y (s_0) \cos \theta)\).
+Define the function
+\(F(s_1, \lambda, \theta) = \Gamma(s_1) - (\Gamma(s_0) + \lambda v) \in \mathbb{R}^2\).
+Note that solving \(F(s_1, \lambda, \theta) = 0\) is the same as finding
+the image point of the billiard map, \(s_1 = s'(s_0, \theta)\), and in
+that case \(\lambda = H(s_0, \theta)\).</p>
+
+    <p>Note that
+\(D_{(s_1, \lambda)}F = \left( \dot \Gamma (s_1) \mid - v(s_1, \theta) \right)\).
+Since \(\partial \mathcal{M}\) is convex, \(v\) is always transversal to
+\(\dot \Gamma\), so we have
+\(\mathrm{det}(D_{(s_1, \lambda)}F ) \neq 0\). By the implicit function
+theorem, at \(F = 0\),
+\(\frac{\partial (s', H)}{\partial \theta} = \left( D_{(s_1, v)}F \right) ^{-1} \cdot \frac{\partial F}{\partial \theta}\).
+Then, since \(\frac{\partial F}{\partial \theta} \neq 0\), we have
+\(\frac{\partial s'}{\partial \theta} \neq 0\). ◻</p>
+  </div>
+</details>
+
+<h2 id="connecting-orbits">Connecting orbits</h2>
+
+<p>In light of the results of section
+<a href="#ssec:connecting_orbits">[ssec:connecting_orbits]</a>, we can establish
+a variational approach for the construction of orbits connecting 2
+points of the table.</p>
+
+<p>Suppose we have a starting point \(\mathbf{s}_k\) and an end point
+\(\mathbf{s}_l\) in \(\Gamma\) reached after \(l-k\) reflections. What
+are the positions of the successive intermediate reflections
+\((s_i, \theta_i) \in V, \ i = [k+1, l-1]\)?</p>
+
+<p>The answer is variational. We construct the orbital action
+\(\mathbf{s}_{kl}(\theta_{k}, s_{k+1}, \theta_{k+1}, \ldots, s_{l-1}, \theta_{l-1}) = \sum_{i=k}^{l-1} H(s_i, \theta_i)\).
+This function simply corresponds to the total length of the orbit
+connecting the two points.</p>
+
+<p>Then, we look for critical points of this length, and these are
+precisely the possible dynamical orbits of our billiard ball.</p>
+
+<p>This interpretation is closely related to geometrical optics. In
+particular, Fermat’s principle and the principle of least action.
+Fermat’s principle states that the path taken by a ray between two given
+points is the path that can be traveled in the least time. Indeed,
+billiards have a real physical application in the study of ray optics
+and other wave phenomena.</p>
+
+<h2 id="periodic-orbits">Periodic orbits</h2>
+
+<div class="definition">
+  <p>A sequence \(\{ s_i, \theta_i\}_{i \in \mathbb{N}}\) is a
+\((p,q)\)-periodic orbit if \(T^q(s_i, \theta_i) = (s_i, \theta_i)\) and
+the trajectory has done \(p\) full rotations around the billiard table.</p>
+</div>
+
+<div id="fig:periodic_orbits" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+    <figure style="text-align: center;">
+        <img src="/assets/images/projects/symplectomorphisms/po1.png" style="width:250px;">
+        <figcaption>p = 1, q = 2</figcaption>
+    </figure>
+    <figure style="text-align: center;">
+        <img src="/assets/images/projects/symplectomorphisms/po2.png" style="width:250px;">
+        <figcaption>p = 1, q = 3</figcaption>
+    </figure>
+    <figure style="text-align: center;">
+        <img src="/assets/images/projects/symplectomorphisms/po3.png" style="width:250px;">
+        <figcaption>p = 2, q = 5</figcaption>
+    </figure>
+</div>
+<p style="text-align: center;"><em>Examples of periodic orbits.</em></p>
+
+<p>Note that this definition can be presented in terms of a lift of the
+transformation \(T\). That is, since
+\(\mathbb{R} / \mathbb{Z} \cong S^1\), consider a lift of
+\(T \colon S^1  \times I \to S^1 \times I\), and call it
+\(F \colon \mathbb{R} \times I \to \mathbb{R} \times I\). Then, a
+\((p,q)\)-periodic orbit is such that
+\(F^q(s_i, \theta_i) = (s_i + p, \theta_i)\).</p>
+
+<p>Now, we wonder about the existence of such orbits. Using the fact that
+\(H\) is a generating function of \(T\), we can prove the following
+result making use of the results of section
+<a href="#sec:PO_cotangent">[sec:PO_cotangent]</a></p>
+
+<div class="theorem">
+  <p>For any \(q \geq 2\) and \(1 \leq p \leq \frac{1}{2} q\) coprime to
+\(p\), there exist two gometrically distinct \((p,q)\)-periodic orbits.</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Consider the set \(M\) of inscribed \(q\)-gons of the table
+\(x_1, \ldots, x_q\), with \(x_i \in \partial \mathcal{M}\). Let
+\(H(x_1, \ldots, x_q) = \|x_1 - x_{q}\| + \|x_2 - x_1\| + \cdots + \|x_q - x_{q-1}\|\)
+be the perimeter length of a given \(q\)-gon, which is precisely the
+action of the periodic orbit of section
+<a href="#sec:action_po">[sec:action_po]</a>. As we have discussed in the
+previous chapter, periodic orbits of \(T\) will correspond to critical
+points of \(H\) (recall that \(T\) is monotone). We will thus prove the
+existance of critical points of \(H\).</p>
+
+    <p>First, note that \(H\) is smooth outside of the set
+\(M_0 = \bigcup_i \{ x_i = x_{i+1}\}\). We now establish the existance
+of \((1,q)\)-periodic trajectories. Since \(M\) is compact, by
+Weierstrass’ theorem \(H\) attains its global maximum on it.
+Furthermore, this maximum cannot lie on \(M_0\), since any \(k\)-gon
+with \(k &lt; q\) has a smaller perimeter than any proper \(q\)-gon.</p>
+
+    <p>In the general case, given \(p,q\), we define \(M\) as the set of
+inscribed star-shaped \(q\)-gons with \(p\) rotations around the table.
+Then, \(H\) has at least \(q\)-maxima in \(M\), obtained by a cyclic
+permutation of the vertices of the same geometrical polygon of maximal
+perimeter.</p>
+
+    <p>To show there are other critical points inside of \(M\), we use the
+min-max argument. That is, consider the set of curves inside \(M\) that
+connect two maximums of \(H\). Consider the minimum of \(H\) on each of
+these curves, and select the maximum of these minima. Then, this is also
+a critical point of \(H\) different from the maximum. Its existance is
+guaranteed by the fact that we do not need to come close to the boundary
+\(M_0\), since \(H\) increases as one moves away from \(M_0\).</p>
+
+    <p>The reason for considering \(p\) coprime to \(q\) is that this way we
+guarantee that the trajectory is not degenerate, that is, traversed by
+the billiard ball several times. ◻</p>
+  </div>
+</details>
+
+<p>Note that if \(p &gt; q\), then the \(q\)-gons are the same but traversed
+in the reverse direction.</p>
+
+<p>Finally, we remark that his result is equivalent to the
+Poincaré-Birkhoff theorem for twist maps in the particular case of the
+billiard map, but we have used a variational approach to prove it.</p>
+
+<h2 id="length-spectrum">Length Spectrum</h2>
+
+<p>Having established the existence of periodic trajectories, we wonder
+about their lengths. This is related to the values that the periodic
+action \(H^{(p,q)}(x) = \sum_{i = 0}^{q-1} H(T^i(x))\) introduced in
+section <a href="#sec:action_po">[sec:action_po]</a> can attain for a particular
+pair \((p,q)\). Recall that as discussed in said section, given a
+particular periodic orbit, this value is an invariant under symplectic
+changes of coordinates (up to an additive constant).</p>
+
+<p>Consider the set \(\mathcal{O}^{(p,q)} = \{(s_i, \theta_i)\}\) of
+\((p,q)\)-periodic orbits. We assign to each \(O \in \mathcal{O}\) the
+value of its periodic action, \(H^{(p,q)}(O)\) (abusing notation).</p>
+
+<div class="definition">
+  <p>The <em>length spectrum</em> of the billiard table \(\Gamma\) is the subset
+\(\mathcal{LS} \subset \mathbb{R}_+\) defined as
+\(\mathcal{LS}(\Gamma) = l \mathbb{N} + \bigcup_{(p,q)} \Lambda^{(p,q)} \mathbb{N}\),
+where \(l = \mathrm{length} (\Gamma)\) and
+\(\Lambda^{(p,q)} = \bigcup_{O \in \mathcal{O}^{(p,q)}} H(O)\) is the
+set of the lengths of all \((p,q)\)-periodic trajectories.</p>
+
+</div>
+<div class="definition">
+  <p>\(\Delta^{(p,q)} = \sup_{O , \bar O \in \mathcal{O}^{(p,q)}} \left| H^{(p,q)}(\bar O) - H^{(p,q)}(O)\right|\)
+is the <em>supremum length difference</em>.</p>
+
+</div>
+
+<p>This is basically the difference in length between the longest and
+shortest periodic orbit. We observe that \(\Delta^{(p,q)}\) has an
+interpretation in terms of the \(w\)-area of a certain region of phase
+space.</p>
+
+<div class="proposition">
+  <p>Let \(O, \bar O\) be 2 distinct \((p,q)\)-periodic orbits,
+\((s_0, \theta_0) \in O, \ (\bar s_0, \bar \theta_0) \in \bar O\). Let
+\(L_0\) be a curve from \((s_0, r_0)\) to \((\bar s_0, \bar r_0)\)
+contained in \(V\), and \(L_k = T^k(L_k)\). We consider \(B \subset V\)
+the domain enclosed between them. Then,
+\(\Delta^{(p,q)} \leq \mathrm{Area}_w (B)\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Note that \(L_0\) and \(L_q\) have the same endpoints in \(V\). First
+assume that \(L_0, L_q\) have no topological crossings in \(V\). Then,
+\(\begin{gathered}
+        \int_{L_{k+1}} \alpha - \int_{L_k} \alpha = \int_{L_k}(T^* \alpha - \alpha) = \int_{L_h} \mathrm{d} H = H(\bar s_k, \bar s_{k+1}) - H (s_k, s_{k+1}) \\
+        \implies \sum_{i = 0}^{q-1} \left( H(\bar s_i, \bar s_{i+1}) - H(s_i, s_{i+1})\right) = \int_{L_{q}} \alpha - \int_{L_0} \alpha = \int_{L_{q} - L_0} \alpha =  \pm \int_{B} w,
+    \end{gathered}\) where the sign \(\pm\) depends on the orientation
+of the closed path \(L_q-L_0\). It follows that
+\(\Delta^{(p,q)} = \int_B w = \mathrm{Area}_w(B).\) If the curve \(L_q\)
+or \(L_0\) have some topological crossing, then
+\(\Delta^{(p,q)} \leq \mathrm{Area}_w(B)\) because \(B\) has multiple
+connected components and the sign changes depends on the component. ◻</p>
+  </div>
+</details>
+
+<p>We will now state some results about \(\Delta^{(p,q)}\).</p>
+
+<div class="proposition">
+  <p>Consider \(\Gamma\) smooth, \(p\) fixed and periodic trajectories
+approaching \(\Gamma\) as \(q \to \infty\). Let \(L^{(p,q)}\) be the
+length of such a trajectory. Then, there exists a sequence
+\((l_k)_{k \geq 1}\) depending only on \(p\) and \(\Gamma\) such that
+\(L^{(p,q)} \asymp p \mathrm{Length}(\Gamma) + \sum_{k \geq 1} \frac{l_k}{q^{2k}}\)
+(the series is asymptotic to \(L^{(p,q)}\))</p>
+
+</div>
+
+<p>The asymptotic coefficients can be explicitly written in terms of the
+curvature \(\kappa(s)\). For example,
+\(l_1 = l_1(\Gamma, p) = - \frac{1}{24} \left( p \int_\Gamma \kappa^{\frac{2}{3}}(s) \mathrm{d}s \right)^3\).</p>
+
+<p>In the analytic case, it turns out that \(\Delta^{(p,q)}\) are
+exponentially small. Indeed, the following proposition found in
+[@martin_length_2016] establishes this.</p>
+
+<div class="proposition">
+  <p>If \(\Gamma\) is analytic and \(p &gt; 0\), then \(\exists K, \alpha &gt; 0\)
+such that \(\Delta^{(p,q)} \leq K e^{-2 \pi \alpha \frac{q}{p}}\).</p>
+
+</div>
+
+<p>Finally, we would like to comment on the relevance of studying these
+lengths. First, it turns out that in some cases we can recover the
+geometry of the table from its length spectrum. This is due to the
+relation between \(\mathcal{LS}(\Gamma)\) and the spectrum of the
+Laplace operator in the billiard table. Furthermore, knowing the
+magnitude of \(\Delta^{(p,q)}\) is useful to understand how “far” the
+dynamics of rotation number \(\frac{p}{q}\) is from forming a smooth
+invariant circle, which is related to Aubrey-Mather theory. In near
+circular tables, \(\Delta^{(p,q)}\) decays exponentially fast, but in
+chaotic tables (such as the stadium) \(\Delta^{(p,q)}\) stays bounded
+away from 0.</p>
+
+<hr>
+<h1 id="references">References</h1>
+<ul>
+  <li>Ralph Abraham, Jerrold E Marsden, and Tudor Ratiu. Manifolds, tensor analysis, and applications. Vol. 75. Springer Science &amp; Business Media, 2012.</li>
+  <li>Alex Haro. “The Primite Function of an Exact Symplectomorphism”. PhD thesis. Universitat de Barcelona, July 1998.</li>
+  <li>P. Martín, R. Ramírez-Ros, and A. Tamarit-Sariol. “Exponentially Small Asymptotic Formulas for the Length Spectrum in Some Billiard Tables”. en. In: Experimental Math- ematics 25.4 (Oct. 2016), pp. 416–440. issn: 1058-6458, 1944-950X. doi: 10.1080/10586458.2015.1076361. 
+Pau Martín, Rafael Ramírez-Ros, and Anna Tamarit-Sariol. “On the length and area spectrum of analytic convex domains”. en. In: Nonlinearity 29.1 (Jan. 2016), pp. 198–231. issn: 0951-7715, 1361-6544. doi: 10.1088/0951-7715/29/1/198.</li>
+  <li>K. Meyer and G. Hall. Introduction to Hamiltonian Dynamical Systems and the N-Body Problem. Applied Mathematical Sciences. Springer New York, 2013. isbn: 9781475740738. <a href="https://books.google.es/books?id=KITdBwAAQBAJ">url</a>.</li>
+  <li>Eva Miranda et al. From Differential Topology to Symplectic Geometry and Beyond. Class notes. 2025.</li>
+  <li>Serge Tabachnikov. Geometry and billiards. Vol. 30. American Mathematical Soc., 2005.</li>
+  <li>Anna Tamarit Sariol, Rafael Ramírez Ros, and Pablo Martín De La Torre. “Singular phenomena in the length spectrum of analytic convex curves”. en. PhD thesis. Universitat Politècnica de Catalunya, July 2015. doi: 10.5821/dissertation-2117-95793.</li>
+</ul>
+
+
+</div>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <!-- <small class="text-muted mb-2"> -->
+  <!--   <i class="fas fa-code"></i> with <i class="fas fa-heart"></i> -->
+  <!--   by <strong>Fernando Muñoz</strong> -->
+  <!-- </small> -->
+
+  <div class="container-fluid justify-content-center">
+<a class="social mx-1" href="https://www.github.com/ferxinii" style="color: #6c757d" onmouseover="this.style.color='#333333'" onmouseout="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1" href="https://www.linkedin.com/in/fernandomu%C3%B1ozpuente" style="color: #6c757d" onmouseover="this.style.color='#007bb5'" onmouseout="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a>
+
+</div>
+
+  <!---->
+  <!---->
+  <!-- <small id="attribution"> -->
+  <!--   theme <a href="https://github.com/yousinix/portfolYOU">portfolYOU</a> -->
+  <!-- </small> -->
+
+</footer>
+
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+</body>
+
+</html>

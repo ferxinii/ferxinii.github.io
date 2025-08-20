@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Voronoi and Delaunay cells">
+  <meta property="og:description" content="Basic definitions and results in any dimension culminating in the duality relationships.">
+  <meta property="og:image" content="/assets/face.png">
+
+  <title>Voronoi and Delaunay cells</title>
+  <meta name="description" content="Basic definitions and results in any dimension culminating in the duality relationships.">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- KaTeX  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+              // ...options...
+          });
+      });
+  </script>
+
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"> -->
+  <!-- <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script> -->
+  <!-- <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" -->
+  <!-- onload="renderMathInElement(document.body);"></script> -->
+
+</head>
+
+
+<body class="h-100 d-flex flex-column">
+<!-- <body class="page.layout"> -->
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/"><h5><b>ferxinii</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link " href="/projects/">Projects</a>
+
+      <a class="nav-item nav-link active" href="/blog/">Blog</a>
+
+      <a class="nav-item nav-link " href="/about/">About</a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <h1><b>Voronoi and Delaunay cells</b></h1>
+
+<p class="post-metadata text-muted">
+  20 August 2025 -  
+  <b>17 mins read time</b>
+
+  <br>Tags: 
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#geometry">
+      <span class="tag badge badge-pill text-primary border border-primary">geometry</span>
+    </a>
+    </p>
+
+
+<div class="list-group my-3"><a class="list-group-item active disabled text-white">Table of Contents</a>
+        <a class="list-group-item list-group-item-action toc-sub" href="#voronoi-diagrams">
+          Voronoi diagrams
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#delaunay-triangulations">
+          Delaunay triangulations
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#duality">
+          Duality
+        </a>
+      
+        <a class="list-group-item list-group-item-action toc-sub" href="#dimensionality-and-degeneracies">
+          Dimensionality and degeneracies
+        </a>
+      
+
+</div>
+
+<!---->
+<!---->
+<!-- <div class="list-group my-3"> -->
+<!---->
+<!---->
+<!--     <a class="list-group-item active disabled text-white">Table of Contents</a> -->
+<!---->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#voronoi-diagrams">Voronoi diagrams</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#delaunay-triangulations">
+Delaunay triangulations</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#duality">
+Duality</a> -->
+<!---->
+<!--    -->
+<!---->
+<!--       <a class="list-group-item list-group-item-action" href="#dimensionality-and-degeneracies">
+Dimensionality and degeneracies</a> -->
+<!---->
+<!--    -->
+<!---->
+<!-- </div> -->
+<!---->
+
+<h1 id="voronoi-and-delaunay-cells">Voronoi and Delaunay cells</h1>
+
+<p>From now on, consider \(S\) to be a finite set of \(m\) distinct points
+in \(\mathbb{R}^n\). We denote as
+\(d(\cdot, \cdot) \colon \mathbb{R}^n \times \mathbb{R}^n \rightarrow \mathbb{R}\)
+the euclidean metric.</p>
+
+<p>Many definitions and results used throughout this chapter are found and
+proved in appendix
+<a href="#chapter:app_convex_geometry">[chapter:app_convex_geometry]</a>. We just
+require the introduction of the following object.</p>
+
+<div class="definition">
+  <p><strong>(Hypersphere)</strong> Given a centre \(c \in \mathbb{R}^n\) and a radius
+\(r &gt; 0\), the corresponding hypersphere is
+\(\{ x \in \mathbb{R}^n \mid d(x,c) = r\}\).</p>
+
+</div>
+
+<h2 id="voronoi-diagrams">Voronoi diagrams</h2>
+
+<div class="definition">
+  <p>Let \(R \subset S\). The <em>Voronoi cell of \(R\)</em>, \(V(R)\), is the set
+of all points of \(\mathbb{R}^n\) equidistant from all sites in \(R\)
+and closer to every site in \(R\) than to any site not in \(R\). That
+is,<br />
+\(V(R) = \{ x \in \mathbb{R}^n \mid d(x,r_1) = d(x, r_2), \ d(x, r_3) &lt; d(x, q) \ \forall r_1, r_2, r_3 \in R, \ q \in S \setminus R\}\).</p>
+
+</div>
+<div class="example">
+  <p>Consider 2 distinct points \(p_1, p_2 \in \mathbb{R}^n\). Then,
+\(V(\{p_1, p_2\})\) is the hyperplane perpendicular to the segment
+joining both points and equidistant to them. \(V(\{p_1\}), V(\{p_2\})\)
+are the corresponding half-spaces.</p>
+
+</div>
+<div class="example">
+  <p>Consider 3 distinct points in the plane
+\(p_1, p_2, p_3 \in \mathbb{R}^2\). \(V(\{p_1, p_2, p_3\})\) is the
+single point equidistant to the three of them—the centre of their
+circumcircle. For \(i \neq j, \ V(\{p_i, p_j\})\) is the semi-infinite
+line starting at \(V(\{p_1, p_2, p_3\})\) and perpendicular to the
+segment joining \(p_i, p_j\). \(V(\{p_i\})\) is the corresponding
+translated cone bounded by these semi-infinite lines.</p>
+
+</div>
+<div class="example">
+  <p>Consider 4 distinct points in the plane. Then,
+\(V(\{p_1, p_2, p_3, p_4\})\) is empty unless all 4 points lie on the
+same circle, in which case it is the centre.</p>
+
+</div>
+<div class="proposition">
+  <p>For \(R \subset S\), \(V(R)\) is the relative interior of a polyhedron.</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>By <a href="#def:polyhedral">[def:polyhedral]</a>, we have to show that \(V(R)\)
+can be written as the relative interior of the intersection of a finite
+collection of closed half-spaces. In particular,
+\(d(x, r) &lt; d(x, q) \iff \langle x-r, x-r \rangle &lt; \langle x-q, x-q \rangle \iff - 2 \langle x, r \rangle + \lvert \lvert  r\lvert \lvert ^2 &lt; - 2 \langle x, q \rangle + \lvert \lvert  q\lvert \lvert ^2 \iff \langle x, b \rangle &lt; \beta\),
+with
+\(b = q -r, \ \beta = \frac{\lvert \lvert q\lvert \lvert ^2 - \lvert \lvert r\lvert \lvert ^2}{2}\).
+Therefore, \(x\) must lie in an open half-space of the hyperplane
+\(H = \{ x \mid \langle x, b \rangle = \beta \}\). We find all necessary
+hyperplanes by running over all \(r \in R, \ q \in S \setminus R\). For
+the equality of distance condition, we can express it as the
+intersection of two closed halfspaces. Finally, note that \(S\) is
+finite, and the fact that the inequalities are strict corresponds to
+taking the relative interior. ◻</p>
+  </div>
+</details>
+
+<p>As a consequence, all Voronoi cells must be convex.</p>
+
+<div class="proposition">
+  <p><span id="prop:unbounded_voronoi" label="prop:unbounded_voronoi"></span>
+For a site \(r \in S\), \(V(\{ r \})\) is unbounded \(\iff\)
+\(r \in \partial \mathrm{conv}(S)\), that is, \(r\) lies on the boundary
+of the convex hull of \(S\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>(\(\Rightarrow\) by contrapositive) Suppose
+\(r \in \mathrm{int}(\mathrm{conv}(S))\). Let \(v\) be an arbitrary unit
+vector, and construct the ray \(s(t) = r + tv, \ t \geq 0\). Define the
+<em>sweeping</em> hyperplane \(\perp\) to \(v\) containing \(s(t)\):
+\(H_t = \{ x \mid \langle x - s(t), v \rangle = 0 \} = \{ x \mid \langle x - r, v \rangle = t \}\).
+Since \(S\) is compact and \(r\in \mathrm{int}(\mathrm{conv}(S))\), then
+\(\exists \max_{q \in S \setminus \{r\}} \langle q - r , v\rangle\).
+Call this value \(t_M\), so for \(t &gt; t_M\), \(H_t\) will never pass
+through any other site. Let \(q_M \in S \setminus \{r\}\) achieve such a
+maximum. Then,
+\(\lvert \lvert s(t) - q_M\lvert \lvert ^2 = t^2 + \lvert \lvert r-q_M\lvert \lvert ^2 - 2 t t_M \Rightarrow d(s(t), q_M)^2 - d(s(t), r)^2 = d(r,q_M)^2 - 2 t t_M\).
+Therefore, if
+\(t &gt; \max(t_M, \frac{d(p, q_M)}{2 t_M}) \Rightarrow d(s(t), q_M) &lt; d(s(t), r) \Rightarrow s(t) \not \in V(\{ r\}) \Rightarrow V(\{r\})\)
+is bounded. We conclude that if \(V(\{r\})\) is unbounded,
+\(r \not \in \mathrm{int}(\mathrm{conv}(S)) \Rightarrow r \in \partial \mathrm{conv(S)}\).</p>
+
+    <p>(\(\Leftarrow\)) Assume \(r \in \partial \mathrm{conv}(S)\) with
+\(V(\{ r \}) \neq \emptyset\). Then, by
+<a href="#thm:support_hyp">[thm:support_hyp]</a> \(\exists\) a supporting
+hyperplane touching \(\mathrm{conv}(S)\) only at \(r\) such that
+\(\mathrm{conv}(S)\) lies entirely in one of the corresponding
+half-spaces. Take its normal outward direction \(v\), and define the ray
+\(s(t) = r + t v, \ t \geq 0\). Then,
+\(d(r, s(t)) &lt; d(q, s(t)) \ \forall t \geq 0, q \in S \setminus \{ r\}\).
+Thus, \(s(t) \in V(\{ r \}) \ \forall t \geq 0\), and since \(s(t)\) is
+unbounded, \(V(\{ r \})\) must also be unbounded. ◻</p>
+  </div>
+</details>
+
+<p>Then, since bounded voronoi cells are bounded polyhedra, they must also
+be polytopes (see <a href="#sec:polyh">[sec:polyh]</a>), so they have a finite
+representation in the sense of <a href="#def:polytope">[def:polytope]</a>. That
+is, bounded voronoi cells are the convex hull of a finite number of
+vertices.</p>
+
+<div class="definition">
+  <p>The <em>Voronoi diagram</em> of \(S\), \(V_S\), is the collection of all
+non-empty Voronoi cells \(V(R)\) for \(R \subset S\).</p>
+
+</div>
+<div class="theorem">
+  <p><span id="thm:vor_complex" label="thm:vor_complex"></span> \(V_S\) is a
+cell complex (in the sense of <a href="#def:cell_complex">[def:cell_complex]</a>)
+that partitions \(\mathbb{R}^n\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>We first show that the Voronoi cells are pairwise disjoint. Let
+\(R, R' \subset S, R \neq R'\). Assume
+\(V(R) \cap V(R') \neq \emptyset\). Take \(x \in V(R) \cap V(R')\).
+Since \(x \in V(R)\),
+\(d(x, r) &lt; d(x, r')\ \forall r \in R, r' \in R'\). However, we must
+also have \(d(x, r') &lt; d(x, r)\ \forall r' \in R', r \in R\), which is a
+contradiction. Therefore, \(V(R) \cap V(R') = \emptyset\) and the
+Voronoi cells are all pairwise disjoint.<br />
+We now wish to show that every face of every cell of \(V_S\) is also in
+\(V_S\). Take \(V(R)\) for some \(R \subset S\). Any face of \(V(R)\)
+corresponds to the set obtained by <em>tightening</em> some of the inequalities
+\(d(x,r) &lt; d(x,q) \rightarrow d(x,r) = d(x,q)\) \(\forall r \in R\) for
+some \(q \in S \setminus R\). Therefore, such a face corresponds to
+\(V(R \cup q)\) for some
+\(q = \{q_1, \ldots, q_k\} \subset S \setminus R\), so it must also
+belong to \(V_S\).<br />
+To see that it partitions \(\mathbb{R}^n\), we show that
+\(\forall x \in \mathbb{R}^n\), \(x \in V(R)\) for some \(R \subset S\).
+It suffices to find the site \(r \in R\) that is closest to \(x\), and
+by definition \(x \in V(\{r\})\). If \(x\) is equidistant to more than
+one site, gather them in a set \(\{r_1, \ldots, r_k\}\) and then again
+\(x \in V(\{ r_1, \ldots, r_k\})\). ◻</p>
+  </div>
+</details>
+
+<p>Therefore, any point \(x \in \mathbb{R}^n\) lies in \(V(R)\) for some
+\(R \subset S\), although \(R\) may consist of more than a single point.
+However, for an arbitrary \(R \subset S\), \(V(R)\) may be empty. This
+happens if any of the conditions of the definition cannot be satisfied.</p>
+
+<h2 id="delaunay-triangulations">Delaunay triangulations</h2>
+
+<div class="definition">
+  <p>If \(R \subset S\) and \(V(R) \neq \emptyset\), the <em>Delaunay cell</em>
+\(D(R)\) is defined as \(\mathrm{cell}(R)\). That is,
+\(D(R) = \mathrm{cell}(R) = \mathrm{ri}(\mathrm{conv}(R))\) (see
+<a href="#def:cell">[def:cell]</a>).</p>
+
+</div>
+
+<p>Note that by definition, a Delaunay cell is convex. The next is a very
+important property characterising such cells.</p>
+
+<div class="lemma">
+  <p><span id="lemma:circum_sph" label="lemma:circum_sph"></span><strong>(Empty
+sphere property)</strong> For \(R \subset S\), \(D(R)\) is a Delaunay cell
+\(\iff\) \(\exists\) a circumscribed hypersphere of \(R\) that contains
+no site of \(S \setminus R\) in its interior.</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>\((\Rightarrow)\) Assume \(D(R)\) is a Delaunay cell, so
+\(V(R) \neq \emptyset\). Take \(x \in V(R)\). Then
+\(d(x, r_i) = d(x, r_j) \ \forall r_i, r_j \in R\). Construct the
+hypersphere centred at \(x\) with radius \(d(x, r_i)\). This is a
+circumscribed hypersphere of \(R\), since all sites of \(R\) belong to
+it. By the second property of \(V(R)\),
+\(d(x, r_k) &lt; d(x, r_l), \forall r_k \in R, r_l \in S \setminus R\), so
+all sites of \(S \setminus R\) lie in its exterior.</p>
+
+    <p>\((\Leftarrow)\) Conversely, assume \(\exists\) such a hypersphere of
+\(R\). By definition, its center belongs to
+\(V(R) \Rightarrow V(R) \neq \emptyset\), so \(D(R)\) is well defined. ◻</p>
+  </div>
+</details>
+
+<p>It is important to note that a Delaunay cell is not necessarily a
+simplex. This can happen in degenerate cases as we discuss in the last
+section. Therefore, \(D_S\) need not be a <em>proper</em> triangulation (in the
+sense of <a href="#def:proper_triang">[def:proper_triang]</a>).</p>
+
+<div class="example">
+  <p>Consider 4 cocircular points in the plane. Then,
+\(V(\{p_1, p_2, p_3, p_4 \})\) is the center of the circle, and
+\(D(\{r_1, r_2, r_3, r_4\})\) is a quadrilateral (which is not a
+simplex).</p>
+
+</div>
+<div class="definition">
+  <p>The <em>Delaunay triangulation</em> of \(S\), \(D_S\), is the collection of
+Delaunay cells \(D(R)\) for \(R \subset S\) and \(V(R) \neq \emptyset\).</p>
+
+</div>
+<div class="theorem">
+  <p><span id="thm:del_triang" label="thm:del_triang"></span> \(D_S\) is a
+triangulation of \(S\) (in the sense of
+<a href="#def:triangulation">[def:triangulation]</a>).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p> </p>
+
+    <ol>
+      <li>
+        <p>We first prove that Delaunay cells are pairwise disjoint. Consider
+\(R, R' \subset S, \ R \neq R'\), having well defined Delaunay
+cells. If \(R' \subset R\), then \(\mathrm{conv}(R')\) is a face of
+\(\mathrm{conv}(R)\), and their relative interiors must be disjoint
+by <a href="#cor:face_ri">[cor:face_ri]</a>. If \(R \cap R' \neq \emptyset\)
+but \(R' \not\subset R\) and \(R \not \subset R'\), we can construct
+a hyperplane intersecting \(R \cap R'\) separating (non-strictly)
+\(D(R)\) and \(D(R')\)
+(<a href="#thm:hyperplane_sep">[thm:hyperplane_sep]</a>). Finally, if
+\(R \cap R' = \emptyset\), consider the corresponding circumscribed
+hyperspheres \(C, C'\) satisfying the empty sphere property, and we
+have two cases. If
+\(C \cap C' = \emptyset \Rightarrow D(R) \cap D(R') = \emptyset\).
+Otherwise, construct a hyperplane passing through \(C \cap C'\)
+strictly separating \(R\) and \(R'\).</p>
+      </li>
+      <li>
+        <p>We now show that every face of a Delaunay cell \(D(R)\) is also a
+Delaunay cell. Any face of \(D(R)\), different from \(D(R)\) itself,
+is precisely \(\mathrm{cell}(R')\) with \(R' = R \cap H\) for some
+hyperplane \(H\) supporting \(\mathrm{conv}(R)\). An empty
+circumscribed sphere to \(R\) can be slightly perturbed to be an
+empty circumscribed sphere of \(R'\), so \(\mathrm{cell}(R')\) is
+also a Delaunay cell by <a href="#lemma:circum_sph">[lemma:circum_sph]</a>.</p>
+      </li>
+      <li>
+        <p>Thus far we have proved that \(D_S\) is a cell complex. We now show
+that \(\mathrm{conv}(S) = \bigcup_{R \subset S} D(R)\). Consider
+\(x \in \mathrm{conv}(S)\). By Carathéodory’s theorem
+<a href="#thm:caratheodory">[thm:caratheodory]</a>, \(\exists R \subset S\)
+such that \(x \in \mathrm{conv}(R)\) with
+\(\lvert R\lvert  \leq n+1\). Take \(R\) as the minimal such set,
+that is, the one with the least elements s.t.
+\(x \in \mathrm{ri}(\mathrm{conv}(R))\). (<em>a</em>) If
+\(\lvert R\lvert  = n+1\), then \(\exists ! C\) circumscribed
+hypersphere to \(R\). If \(\exists q \in S \setminus R\) that lies
+inside \(C\), we can replace a point of \(R\) by \(q\), such that
+\(x\) is still in its convex hull but the hypersphere is smaller.
+Repeat until there is no such point inside \(C\), so by
+<a href="#lemma:circum_sph">[lemma:circum_sph]</a>, \(x \in D(R)\). (<em>b</em>) If
+\(\lvert R\lvert  &lt; n+1\), a similar construction is done on
+\(\mathrm{aff}(R)\), resulting in a Delaunay cell of smaller
+dimension. Therefore,
+\(\mathrm{conv}(S) \subset \bigcup_{R \subset S} D(R)\). Note that
+\(\bigcup_{R \subset S} D(R) \subset \mathrm{conv}(S)\) is true by
+definition.</p>
+      </li>
+      <li>
+        <p>As shown, every face of every cell must belong to \(D_S\), in
+particular 0-dimensional faces which correspond to the vertices in
+\(S\). Conversely, assume that there exists a point \(p \in S\) that
+is not a vertex in \(D_S\). Thus, it must lie strictly inside some
+\(D(R)\subset D_S\), violating the empty sphere condition and
+resulting in a contradiction. Therefore, the vertices of \(D_S\) are
+precisely \(S\).</p>
+      </li>
+    </ol>
+
+    <p> ◻</p>
+  </div>
+</details>
+
+<p>Finally, it is useful to characterise Delaunay cells locally.</p>
+
+<div class="definition">
+  <p>Two opposite \(n\)-cells \(\mathrm{cell}(R)\) and \(\mathrm{cell}(R')\)
+are <em>locally Delaunay</em> if \(R, R'\) have corresponding circumscribed
+hyperspheres \(C, C'\) such that \(R \setminus R'\) lies outside \(C'\)
+(equivalently, \(R' \setminus R\) lies outside \(C\)).</p>
+
+</div>
+<div class="lemma">
+  <p>A triangulation is Delaunay \(\iff\) all \(n\)-cells are locally
+Delaunay.</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>(\(\Rightarrow\)) If a triangulation is Delaunay, then by the empty
+sphere property, all \(n\)-cells must be locally Delaunay.
+(\(\Leftarrow\)) Select an \(n\)-cell \(D(R)\). We will prove that any
+\(s \in S \setminus R\) lies outside of the circumscribed hypersphere of
+\(R\). Select \(r \in \mathrm{int}(\mathrm{conv}(R)) = D(R)\) such that
+the line segment \(\overline{rs}\) avoids all \(k\)-cells for
+\(k \leq n-2\) and intersects \((n-1)\)-cells transversally. We may
+always find such an \(r\) since the triangulation is finite and the set
+of “bad” directions is a finite union of lower-dimensional subsets of
+the unit sphere of measure zero. This generates a sequence
+\(N_0, F_1, N_1, \ldots, F_k, N_k\) where \(N_i\) are the \(n\)-cells
+and \(F_i\) the \((n-1)\)-cells (facets) that \(\overline{rs}\)
+intersects until it arrives to \(s\). Denote by \(C_i\) the
+circumscribed hypersphere of \(N_i\). We will do an inverse induction on
+\(i = k, \ldots, 0\). For the base case consider \(N_k\), note that
+there is a hyperplane passing through \(F_k\) separating \(s\) from
+\(N_{k-1}\) and \(s\) must lie outside of \(C_{k-1}\) (locally
+Delaunay). The induction hypothesis is that \(s\) lies outside of
+\(C_i\). Now, consider \(N_{i-1}\). The hyperplane passing through
+\(F_i\) separates the only vertex of \(N_i\) not shared by \(N_{i-1}\),
+and it must lie outside of \(C_{i-1}\) (locally Delaunay). Since the
+intersection of \(\overline{rs}\) with \(F_{i}\) is transversal, \(s\)
+must also lie on the same side of the plane, and by the induction
+hypothesis, it must also be outside of \(C_{i-1}\). Thus, we have proved
+that \(s \not \in C_0\), so all sites \(s \in S \setminus R\) are
+outside the circumscribed hypersphere of \(R\). ◻</p>
+  </div>
+</details>
+
+<h2 id="sec:duality">Duality</h2>
+
+<p>The following theorem establishes a duality relationship between \(V_S\)
+and \(D_S\).</p>
+
+<div class="theorem">
+  <p>\(V_S\) and \(D_S\) are dual. That is, for \(R, R' \subset S\), \(V(R)\)
+is a face of \(V(R')\) \(\iff\) \(D(R')\) is a face of \(D(R)\).</p>
+
+</div>
+
+<p>The proof makes use of many constructions developed in the proofs of
+<a href="#thm:vor_complex">[thm:vor_complex]</a> and
+<a href="#thm:del_triang">[thm:del_triang]</a></p>
+
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Suppose \(V(R), V(R')\) are distinct Voronoi cells, so \(D(R), D(R')\)
+are distinct Delaunay cells. Then, \(V(R')\) is a face of \(V(R)\)
+\(\iff\) some of the inequalities defining \(V(R)\) are tightened to
+equalities \(\iff R' = R \cup q\) for some \(q \subset S \setminus R\)
+\(\iff R = R' \cap H\) for some hyperplane \(H\) containing \(q\) that
+supports the convex hull of \(R'\) \(\iff D(R)\) is a face of
+\(D(R')\). ◻</p>
+  </div>
+</details>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+<img src="/assets/images/posts/voronoi/duality_1.png" alt="Example right lung" width="400" height="auto" />
+<img src="/assets/images/posts/voronoi/duality_2.jpeg" alt="Example left lung" width="400" height="auto" />
+</div>
+
+<h2 id="dimensionality-and-degeneracies">Dimensionality and degeneracies</h2>
+
+<div class="proposition">
+  <p><span id="prop:dim_voronoi" label="prop:dim_voronoi"></span> If
+\(V(R) \neq \emptyset\),
+\(\mathrm{dim}(V(R)) = n - \mathrm{dim}(\mathrm{conv}(R))\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Note \(V(R)\) is a relatively open subset of the affine set
+\(M = \{ x \mid d(x, r_i) = d(x, r_j) \ \forall r_i, r_j \in R\}\), so
+\(dim(V(R)) = dim(M)\). Note
+\(d(x, r_i) = d(x, r_j) \ \forall r_i, r_j \in R \iff \langle x, r_i - r_1 \rangle = \frac{1}{2}( \lvert \lvert r_i\lvert \lvert ^2 - \lvert \lvert r_1\lvert \lvert ^2) \ \forall r_i \neq r_1 \in R\),
+so \(x\) is the solution set to the system \(\mathbf{A} x = b\), with
+\(\mathbf{A}\) having \(r_i - r_1\) as columns. Then,
+\(\mathrm{dim}(M) = n - \mathrm{rank}(\mathbf{A})\). Note that by
+definition (<a href="#def:conv_dim">[def:conv_dim]</a>)
+\(\mathrm{dim}(\mathrm{conv}(R)) = \mathrm{dim}(\mathrm{aff}(R))\), and
+as developed in <a href="#sec:affine">[sec:affine]</a>,
+\(\mathrm{dim}(\mathrm{aff}(R)) = \mathrm{dim}(\mathrm{span}(\{ r_2-r_1, \ldots, r_m-r_1\})) = \mathrm{rank}(\mathbf{A})\). ◻</p>
+  </div>
+</details>
+
+<div class="proposition">
+  <p>If \(V(R) \neq \emptyset\),
+\(\mathrm{dim}(V(R)) \geq n - \lvert R\lvert  + 1\) and
+\(\mathrm{dim}(D(R)) \leq \lvert R\lvert  - 1\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Note that
+\(\mathrm{dim}(D(R)) = \mathrm{dim}(\mathrm{conv}(R)) = \mathrm{dim}(\mathrm{aff}((R)) \leq \lvert R\lvert  - 1\)
+(see <a href="#sec:affine">[sec:affine]</a>) and use
+<a href="#prop:dim_voronoi">[prop:dim_voronoi]</a>. ◻</p>
+  </div>
+</details>
+
+<div class="lemma">
+  <p>If \(V(R) \neq \emptyset\),
+\(\mathrm{dim}(V(R)) + \mathrm{dim}(D(R)) = n\).</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>Note that
+\(\mathrm{dim}(D(R)) = \mathrm{dim}(\mathrm{ri}(\mathrm{conv}(R))) = \mathrm{dim}(\mathrm{conv}(R))\)
+and simply use <a href="#prop:dim_voronoi">[prop:dim_voronoi]</a>. ◻</p>
+  </div>
+</details>
+
+<div class="definition">
+  <p>If \(V(R) \neq \emptyset\) and
+\(\mathrm{dim}(V(R)) &gt; n - \lvert R\lvert  + 1\) (or
+\(\mathrm{dim}(D(R)) &lt; \lvert R\lvert  -1\)), then \(V(R)\) and \(D(R)\)
+are <em>degenerate</em>.</p>
+
+</div>
+
+<p>If the cells are degenerate, the previous propositions imply that the
+sites in \(R\) are not affinely independent. That is, all sites lie on a
+common affine set \(M\) with \(\mathrm{dim}(M) &lt; \lvert R\lvert  - 1\).
+Furthermore, since \(D(R)\) is well defined, all sites must lie on a
+common circumscribed hypersphere; otherwise the empty sphere condition
+would not be satisfied. Thus, if \(\lvert R\lvert  &gt; n +1\) and
+\(V(R) \neq \emptyset\), the sites must lie on a common circumscribed
+hypersphere, and the corresponding cells are degenerate.</p>
+
+<div class="proposition">
+  <p>If \(\lvert R\lvert  = 1, 2, 3\), then \(V(R)\) and \(D(R)\) are never
+degenerate.</p>
+
+</div>
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>For \(\lvert R\lvert  = 1\), the condition
+\(\mathrm{dim}(V(R)) &gt; n - \lvert R\lvert  + 1 = n\) can never be
+satisfied, since the maximum dimension is \(n\). For
+\(\lvert R\lvert  = 2\), \(R = \{ r_1, r_2\}\). If
+\(V(R) \neq \emptyset\), \(V(R)\) must be a relatively open subset of
+the 1-dimensional affine space \(d(x, r_1) = d(x, r_2)\), so
+\(\mathrm{dim}(V(R)) \leq 1\). In fact,
+\(\mathrm{dim}(V(R)) \leq \min \{n-1, 1\}\) (if \(n=1\), then
+\(V(\{r_1, r_2\})\) must be a single point), so
+\(\mathrm{dim}(V(R)) \not &gt; n - 1\). For \(\lvert R\lvert  = 3\), note
+that the sites cannot lie in a line and in a hypersphere simultenously,
+so degeneracy is not possible. ◻</p>
+  </div>
+</details>
+
+<div class="definition">
+  <p>\(S\) is in <em>general position</em> if no \(n+2\) points lie on a common
+hypersphere and every subset of at most \(n+1\) elements is affinely
+independent.</p>
+
+</div>
+
+<p>If \(S\) is in general position, then no cell is degenerate. In such a
+case, all Delaunay cells are simplexes, so \(D_S\) is a <em>proper</em>
+triangulation. Additionally, all Voronoi cells have dimension
+\(n-(\lvert R\lvert -1)\) and all Delaunay cells have dimension
+\(\lvert R\lvert -1\).</p>
+
+<h2 id="references">References</h2>
+<ul>
+  <li>S. Fortune. “VORONOI DIAGRAMS and DELAUNAY TRIANGULATIONS”</li>
+</ul>
+
+
+
+</div>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <!-- <small class="text-muted mb-2"> -->
+  <!--   <i class="fas fa-code"></i> with <i class="fas fa-heart"></i> -->
+  <!--   by <strong>Fernando Muñoz</strong> -->
+  <!-- </small> -->
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="https://www.github.com/ferxinii"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/fernandomuñozpuente"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a>
+
+</div>
+
+  <!---->
+  <!---->
+  <!-- <small id="attribution"> -->
+  <!--   theme <a href="https://github.com/yousinix/portfolYOU">portfolYOU</a> -->
+  <!-- </small> -->
+
+</footer>
+
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+</body>
+
+</html>

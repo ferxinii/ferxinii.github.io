@@ -1,0 +1,43 @@
+.link-after {
+  content: "";
+  display: block;
+  height: 0.15em;
+  background: $primary;
+}
+
+.nav-link,
+.navbar-brand {
+  &::after {
+    @extend .link-after;
+    width: 0;
+    transition: width 0.35s;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+.nav-item.active {
+  font-weight: bold;
+
+  &::after {
+    @extend .link-after;
+    width: 100% !important;
+  }
+}
+
+.navbar-brand {
+  margin-bottom: -14px;
+  &::after {
+    margin-top: -0.25em;
+  }
+}
+
+.navbar-themed {
+  border-bottom: 2px solid #ccc;
+  /* background-color: $secondary;  // or replace $primary with any color code you want */
+  // optional: add some padding or shadow if you want
+  // padding: 0.5rem 1rem;
+  // box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About this website">
+  <meta property="og:description" content="Modifying a jekyll template.">
+  <meta property="og:image" content="/assets/face.png">
+
+  <title>About this website</title>
+  <meta name="description" content="Modifying a jekyll template.">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- KaTeX  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+              // ...options...
+          });
+      });
+  </script>
+
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"> -->
+  <!-- <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script> -->
+  <!-- <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" -->
+  <!-- onload="renderMathInElement(document.body);"></script> -->
+
+</head>
+
+
+<body class="h-100 d-flex flex-column">
+<!-- <body class="page.layout"> -->
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/"><h5><b>ferxinii</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link " href="/projects/">Projects</a>
+
+      <a class="nav-item nav-link active" href="/blog/">Blog</a>
+
+      <a class="nav-item nav-link " href="/about/">About</a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <h1><b>About this website</b></h1>
+
+<p class="post-metadata text-muted">
+  08 August 2025 -  
+  <b>6 mins read time</b>
+
+  <br>Tags: 
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#web">
+      <span class="tag badge badge-pill text-primary border border-primary">web</span>
+    </a>
+    </p>
+
+<p>This was my first encounter with html, jekyll and scss.</p>
+
+<h2 id="template-and-modifications">Template and modifications</h2>
+<p>I modified the <em>jekyll</em> template <a href="https://github.com/yousinix/portfolYOU">portfolYOU</a>. In particular:</p>
+<ul>
+  <li>Landing page to have a background image.</li>
+  <li>Changed the skills bar in the <em>about</em> page.</li>
+  <li>I tweaked around various other configurations to make it more personal.</li>
+</ul>
+
+<h2 id="landing-page-plot">Landing page plot</h2>
+<p>I wanted to make a plot reminiscent of warped space-time or ripples in a water surface. To achieve this, I wrote a simple python script that:</p>
+<ol>
+  <li>Generates 4 random sources in a square.</li>
+  <li>Each source adds a radial sinusoidal displacement to a meshgrid (with different amplitudes in each coordinate).</li>
+  <li>The overall result is the superposition of these 4 sources.</li>
+</ol>
+
+<h2 id="latex-to-markdown">LaTeX to Markdown</h2>
+<p>I have implemented the classes <em>definition</em>, <em>theorem</em>, <em>proposition</em>, <em>corollary</em>, <em>lemma</em>, and <em>example</em> to be used directly in Markdown.</p>
+
+<div class="theorem">
+  <p>For example, this is a theorem.</p>
+</div>
+
+<div class="corollary">
+  <p>And this is a corollary.</p>
+</div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div class=theorem&gt;
+For example, this is a theorem.
+&lt;/div&gt;
+
+&lt;div class=corollary&gt;
+And this is a corollary.
+&lt;/div&gt;
+</code></pre></div></div>
+
+<details>
+  <summary><em>Proof</em></summary>
+  <div class="proof">
+    <p>This is a proof by intimidation. Trivial! ◻</p>
+  </div>
+</details>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;details markdown="1"&gt;&lt;summary markdown="span"&gt;*Proof*&lt;/summary&gt;
+&lt;div class="proof"&gt;
+This is a proof by intimidation. Trivial! ◻
+&lt;/div&gt;&lt;/details&gt;
+</code></pre></div></div>
+
+<p>Additionaly, I have created a script that uses <em>pandoc</em> to automatically convert a LaTeX file into the corresponding markdown format in such a way to be used directly in this website. This tool can be found here. Proofs are automatically converted into collapsable items as above.</p>
+
+<div class="proof">
+  <p>The script is divided into 3 files:</p>
+
+  <details>
+    <summary><strong>run.sh</strong></summary>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+python3 preserve_env_titles.py <span class="nv">$1</span> <span class="o">&gt;</span> input.pre.tex
+<span class="nb">sed</span> <span class="nt">-E</span> <span class="s1">'s/\\\|/\\lvert \\lvert /g'</span> input.pre.tex <span class="o">&gt;</span> input.fixed.tex
+<span class="nb">sed</span> <span class="nt">-E</span> <span class="s1">'s/\|/\\lvert /g'</span> input.fixed.tex <span class="o">&gt;</span> input.fixed2.tex
+pandoc input.fixed2.tex  <span class="nt">-f</span> latex <span class="nt">-t</span> markdown <span class="nt">--lua-filter</span><span class="o">=</span>filters.lua  <span class="nt">-o</span> <span class="nv">$2</span>
+<span class="nb">rm</span> <span class="nt">-rf</span> input.pre.tex input.fixed.tex input.fixed2.tex
+</code></pre></div>    </div>
+  </details>
+
+  <details>
+    <summary><strong>preserve_env_titles.py</strong></summary>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"""
+This moves optional theorem/definition names [Title] into the body as </span><span class="se">\t</span><span class="s">extbf{(Title)}
+so Pandoc will preserve them. For example,
+
+</span><span class="se">\\</span><span class="s">begin{theorem}[Pitagoras]
+a^2 + b^2 = c^2
+</span><span class="se">\\</span><span class="s">end{theorem}
+
+will become:
+
+</span><span class="se">\\</span><span class="s">begin{theorem}</span><span class="se">\\</span><span class="s">textbf{(Pitagoras)}
+ a^2 + b^2 = c^2
+</span><span class="se">\\</span><span class="s">end{theorem}
+"""</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">ENV_RE</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span>
+    <span class="sa">r</span><span class="s">'(\\begin\{(theorem|lemma|definition|proposition|corollary)\})'</span>   <span class="c1"># \begin{env}
+</span>    <span class="sa">r</span><span class="s">'(?:\s*\[(.*?)\])?'</span>            <span class="c1"># optional [Title]
+</span>    <span class="sa">r</span><span class="s">'(\s*\\label\{[^}]*\})?'</span><span class="p">,</span>      <span class="c1"># optional \label{...} (right after)
+</span>    <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="p">.</span><span class="n">DOTALL</span>
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">repl</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+    <span class="n">begin</span> <span class="o">=</span> <span class="n">m</span><span class="p">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>      <span class="c1"># \begin{env}
+</span>    <span class="n">env</span> <span class="o">=</span> <span class="n">m</span><span class="p">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">m</span><span class="p">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>     <span class="c1"># may be None
+</span>    <span class="n">label</span> <span class="o">=</span> <span class="n">m</span><span class="p">.</span><span class="n">group</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="ow">or</span> <span class="s">""</span>  <span class="c1"># may be empty
+</span>    <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+        <span class="n">insert</span> <span class="o">=</span> <span class="s">"</span><span class="se">\\</span><span class="s">textbf{("</span> <span class="o">+</span> <span class="n">title</span> <span class="o">+</span> <span class="s">")} "</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">insert</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="k">return</span> <span class="n">begin</span> <span class="o">+</span> <span class="n">label</span>  <span class="o">+</span> <span class="n">insert</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="p">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Usage: preserve_theorem_titles.py input.tex &gt; output.tex"</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="n">sys</span><span class="p">.</span><span class="n">stderr</span><span class="p">)</span>
+        <span class="n">sys</span><span class="p">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">fname</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">txt</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf8"</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">new</span> <span class="o">=</span> <span class="n">ENV_RE</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="n">repl</span><span class="p">,</span> <span class="n">txt</span><span class="p">)</span>
+    <span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">new</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>    </div>
+  </details>
+
+  <details>
+    <summary><strong>filters.lua</strong></summary>
+    <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">function</span> <span class="nf">Math</span><span class="p">(</span><span class="n">el</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pandoc</span><span class="p">.</span><span class="n">RawInline</span><span class="p">(</span><span class="s2">"markdown"</span><span class="p">,</span> <span class="s2">"$$"</span> <span class="o">..</span> <span class="n">el</span><span class="p">.</span><span class="n">text</span> <span class="o">..</span> <span class="s2">"$$"</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="c1">-- Helper to convert any Div with certain classes to HTML</span>
+<span class="kd">local</span> <span class="k">function</span> <span class="nf">convert_div_to_html</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">classname</span><span class="p">)</span>
+    <span class="c1">-- Pandoc may store theorem name in el.attributes["title"]</span>
+    <span class="kd">local</span> <span class="n">content</span> <span class="o">=</span> <span class="n">pandoc</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">pandoc</span><span class="p">.</span><span class="n">Pandoc</span><span class="p">(</span><span class="n">el</span><span class="p">.</span><span class="n">content</span><span class="p">),</span> <span class="s2">"gfm"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pandoc</span><span class="p">.</span><span class="n">RawBlock</span><span class="p">(</span><span class="s2">"html"</span><span class="p">,</span>
+        <span class="s1">'&lt;div class="'</span> <span class="o">..</span> <span class="n">classname</span> <span class="o">..</span> <span class="s1">'"&gt;\n'</span> <span class="o">..</span>
+        <span class="n">content</span> <span class="o">..</span>
+        <span class="s1">'</span><span class="se">\n</span><span class="s1">&lt;/div&gt;'</span>
+    <span class="p">)</span>
+<span class="k">end</span>
+
+<span class="c1">-- Convert custom theorem-like environments</span>
+<span class="k">function</span> <span class="nf">Div</span><span class="p">(</span><span class="n">el</span><span class="p">)</span> 
+    <span class="kd">local</span> <span class="n">class</span> <span class="o">=</span> <span class="n">el</span><span class="p">.</span><span class="n">classes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> 
+    <span class="k">if</span> <span class="n">class</span> <span class="o">==</span> <span class="s2">"theorem"</span> <span class="ow">or</span> <span class="n">class</span> <span class="o">==</span> <span class="s2">"definition"</span> 
+      <span class="ow">or</span> <span class="n">class</span> <span class="o">==</span> <span class="s2">"proposition"</span> <span class="ow">or</span> <span class="n">class</span> <span class="o">==</span> <span class="s2">"corollary"</span> 
+      <span class="ow">or</span> <span class="n">class</span> <span class="o">==</span> <span class="s2">"lemma"</span> <span class="ow">or</span> <span class="n">class</span> <span class="o">==</span> <span class="s2">"example"</span> <span class="k">then</span> 
+        <span class="k">return</span> <span class="n">convert_div_to_html</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">class</span><span class="p">)</span>
+    <span class="k">elseif</span> <span class="n">class</span> <span class="o">==</span> <span class="s2">"proof"</span> <span class="k">then</span> 
+        <span class="c1">-- remove leading "Proof." from first paragraph</span>
+        <span class="kd">local</span> <span class="n">content_blocks</span> <span class="o">=</span> <span class="n">el</span><span class="p">.</span><span class="n">content</span>
+        <span class="k">if</span> <span class="o">#</span><span class="n">content_blocks</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">content_blocks</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">t</span> <span class="o">==</span> <span class="s2">"Para"</span> <span class="k">then</span>
+            <span class="kd">local</span> <span class="n">inlines</span> <span class="o">=</span> <span class="n">content_blocks</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">content</span>
+            <span class="kd">local</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="o">#</span><span class="n">inlines</span> <span class="k">do</span>
+                <span class="kd">local</span> <span class="n">txt</span> <span class="o">=</span> <span class="n">pandoc</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">inlines</span><span class="p">[</span><span class="n">i</span><span class="p">]):</span><span class="nb">gsub</span><span class="p">(</span><span class="sr">"^%s+"</span><span class="p">,</span> <span class="sr">""</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">txt</span><span class="p">:</span><span class="n">lower</span><span class="p">():</span><span class="n">match</span><span class="p">(</span><span class="s2">"^proof[.:]?%s*$"</span><span class="p">)</span> <span class="k">then</span>
+                    <span class="nb">table.remove</span><span class="p">(</span><span class="n">inlines</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+                <span class="k">else</span>
+                    <span class="k">break</span>
+                <span class="k">end</span>
+            <span class="k">end</span>
+            <span class="n">content_blocks</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">content</span> <span class="o">=</span> <span class="n">inlines</span>
+        <span class="k">end</span>
+        <span class="c1">-- Put into appropriate format</span>
+        <span class="kd">local</span> <span class="n">content</span> <span class="o">=</span> <span class="n">pandoc</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">pandoc</span><span class="p">.</span><span class="n">Pandoc</span><span class="p">(</span><span class="n">el</span><span class="p">.</span><span class="n">content</span><span class="p">),</span> <span class="s2">"gfm"</span><span class="p">)</span> 
+        <span class="k">return</span> <span class="n">pandoc</span><span class="p">.</span><span class="n">RawBlock</span><span class="p">(</span><span class="s2">"html"</span><span class="p">,</span> 
+        <span class="s1">'&lt;details markdown="1"&gt;&lt;summary markdown="span"&gt;*Proof*&lt;/summary&gt;\n'</span> <span class="o">..</span> 
+        <span class="s1">'&lt;div class="proof"&gt;\n'</span> <span class="o">..</span> 
+        <span class="n">content</span> <span class="o">..</span> 
+        <span class="s1">'&lt;/div&gt;'</span> <span class="o">..</span> 
+        <span class="s1">'&lt;/details&gt;\n\n'</span> <span class="p">)</span> 
+    <span class="k">end</span> 
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="nf">Link</span><span class="p">(</span><span class="n">el</span><span class="p">)</span>
+    <span class="c1">-- If the link has attributes like reference-type, remove them</span>
+    <span class="n">el</span><span class="p">.</span><span class="n">attributes</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">return</span> <span class="n">el</span>
+<span class="k">end</span>
+</code></pre></div>    </div>
+  </details>
+
+</div>
+
+
+
+</div>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <!-- <small class="text-muted mb-2"> -->
+  <!--   <i class="fas fa-code"></i> with <i class="fas fa-heart"></i> -->
+  <!--   by <strong>Fernando Muñoz</strong> -->
+  <!-- </small> -->
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="https://www.github.com/ferxinii"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/fernandomuñozpuente"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a>
+
+</div>
+
+  <!---->
+  <!---->
+  <!-- <small id="attribution"> -->
+  <!--   theme <a href="https://github.com/yousinix/portfolYOU">portfolYOU</a> -->
+  <!-- </small> -->
+
+</footer>
+
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+</body>
+
+</html>

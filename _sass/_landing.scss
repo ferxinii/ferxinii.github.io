@@ -1,0 +1,26 @@
+
+#container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+
+#dummy {
+  padding-top: 100%; /* 1:1 aspect ratio */
+}
+
+#element {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.landing-section {
+	background-image: url('/assets/images/landing.svg');
+	background-size: cover;
+	background-position: center;
+	padding: 6rem 2rem;
+}
+
