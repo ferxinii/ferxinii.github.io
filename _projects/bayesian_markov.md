@@ -1,5 +1,5 @@
 ---
-name: Bayesian 2008 crisis study using a Markovian regime switching model
+name: Bayesian crisis study using a Markovian regime switching model
 tools: [bayesian analysis, finance, R, stan]
 image: /assets/images/projects/bayesian_markov/results_1.png
 description: Bayesian model to detect regions of stability and uncertainty in the financial markets of Spain during the 2008 crisis.
